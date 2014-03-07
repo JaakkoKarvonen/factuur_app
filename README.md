@@ -1,7 +1,9 @@
 <h1>FactuurApp</h1>
 <i>De FactuurApp is een applicatie waarmee je eenvoudig, snel en consistent een factuur kunt aanmaken.</i>
 
-<h3>Features:</h3>
+<p>Door David de Bie & Jaakko Karvonen</p>
+
+<h3>Features</h3>
 <ul>
 <li>Aanmelden + inloggen gebruiker</li>
 <li>Eigen bedrijfsprofiel aanmaken: naam, adres, emailadres, btw-nr, kvk-nr, rekeningnr, logo,</li>
@@ -21,4 +23,5 @@
 <li>jQuery Mobile (of Sensa Touch)</li>
 <li>SQlite3</li>
 </ul>
+
 
