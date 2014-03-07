@@ -1,5 +1,5 @@
 <h1>FactuurApp</h1>
-<i>De FactuurApp is een applicatie waarmee je eenvoudig en snel een consistente factuur kunt aanmaken.</i>
+<i>De FactuurApp is een applicatie waarmee je eenvoudig, snel en consistent een factuur kunt aanmaken.</i>
 
 <h3>Features:</h3>
 <ul>
