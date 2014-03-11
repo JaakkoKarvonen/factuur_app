@@ -1,0 +1,21 @@
+<% provide(:title, 'Nieuw product') %>
+<h1>Nieuw product</h1>
+
+<div class="row">
+  <div class="span6 offset3">
+  	<%= form_for(@product, url: newproduct_path) do |f| %>
+
+  	  <%= f.label :description, "Naam/omschrijving" %>
+  	  <%= f.text_field :description %>
+
+  	  <%= f.label :serial, "Serienummer" %>
+  	  <%= f.text_field :serial %>
+
+  	  <%= f.label :price, "Prijs" %>
+  	  <%= f.text_field :price %>
+
+  	  <%= f.submit "Toevoegen", class: "btn btn-large btn-primary" %>
+  	<% end %>
+
+  </div>
+</div>

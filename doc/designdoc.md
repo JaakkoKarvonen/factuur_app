@@ -26,6 +26,7 @@ Views:
 - Sign in
 - Sign up
 - New Contact
+- New Product
 - 
 
 
