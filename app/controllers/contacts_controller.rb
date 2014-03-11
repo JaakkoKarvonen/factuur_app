@@ -10,6 +10,7 @@ class ContactsController < ApplicationController
   def create
     @contact = Contact.new(contact_params)
     if @contact.save
+      flash[:notice] = "Contact is succesvol toegevoegd!"
       redirect_to @contact
     else
       render 'new'

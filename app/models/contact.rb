@@ -13,5 +13,5 @@ class Contact < ActiveRecord::Base
 	VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
 	validates :email, presence: true, format: { with: VALID_EMAIL_REGEX }, uniqueness: { case_sensitive: false }
 	VALID_ACCOUNT_REGEX = /\ANL+[0-9]{2}+[A-Z]{4}+[0-9]{10}\z/i
-	validates :account, format: { with: VALID_ACCOUNT_REGEX }
+	validates :account, presence: false, format: { with: VALID_ACCOUNT_REGEX }
 end
