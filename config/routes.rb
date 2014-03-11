@@ -1,8 +1,11 @@
 FactuurApp::Application.routes.draw do
+  resources :products, only: [:create, :destroy]
+
   root 'static_pages#home'
   match 'home',       to: 'static_pages#home',  via: 'get'
   match 'myproducts', to: 'products#show',      via: 'get'
   match 'newproduct', to: 'products#new',       via: 'get'
+  match 'newproduct', to: 'products#create',       via: 'post'
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

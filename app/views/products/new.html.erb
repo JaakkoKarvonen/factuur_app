@@ -5,7 +5,10 @@
   <div class="span6 offset3">
   	<%= form_for(@product, url: newproduct_path) do |f| %>
 
-  	  <%= f.label :description, "Naam/omschrijving" %>
+  	  <%= f.label :name, "Naam" %>
+      <%= f.text_field :name %>
+
+      <%= f.label :description, "Omschrijving" %>
   	  <%= f.text_field :description %>
 
   	  <%= f.label :serial, "Serienummer" %>

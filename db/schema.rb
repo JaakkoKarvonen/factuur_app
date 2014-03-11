@@ -14,6 +14,7 @@
 ActiveRecord::Schema.define(version: 20140311105950) do
 
   create_table "products", force: true do |t|
+    t.string   "name"
     t.string   "description"
     t.string   "serial"
     t.integer  "price"
