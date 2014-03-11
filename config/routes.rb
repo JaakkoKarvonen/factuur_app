@@ -1,7 +1,12 @@
 FactuurApp::Application.routes.draw do
+<<<<<<< HEAD
   resources :products, only: [:create, :destroy]
 
+=======
+  get "contacts/new"
+>>>>>>> 3188f478a0500e916ac1e9e4f6649eb451e2d3e5
   root 'static_pages#home'
+  match 'newcontact', to: 'contacts#new',       via: 'get'
   match 'home',       to: 'static_pages#home',  via: 'get'
   match 'myproducts', to: 'products#show',      via: 'get'
   match 'newproduct', to: 'products#new',       via: 'get'
