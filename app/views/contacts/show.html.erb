@@ -6,3 +6,5 @@
 <%= @contact.address %>, <%= @contact.postcode %> <%= @contact.city %>
 <br>
 KvK:<%= @contact.kvk %> | BTW:<%= @contact.btw %> | IBAN: <%= @contact.account %>
+<br><br>
+<%= link_to 'Wijzig', edit_contact_path(@contact) %> | <%= link_to "Verwijder", @contact, method: :delete, data: { confirm: "Weet u het zeker?" } %>

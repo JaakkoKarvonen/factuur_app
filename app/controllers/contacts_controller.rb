@@ -1,4 +1,10 @@
 class ContactsController < ApplicationController
+
+  def index
+    #@contacts = Contact.all
+    @contacts = Contact.paginate(page: params[:page])
+  end
+
   def show
     @contact = Contact.find(params[:id])
   end
@@ -29,6 +35,12 @@ class ContactsController < ApplicationController
     else
       render 'edit'
     end
+  end
+
+  def destroy
+    Contact.find(params[:id]).destroy
+    flash[:notice] = "Contact verwijderd."
+    redirect_to contacts_url
   end
 
   private
