@@ -11,7 +11,23 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140311105950) do
+ActiveRecord::Schema.define(version: 20140311171225) do
+
+  create_table "contacts", force: true do |t|
+    t.string   "company"
+    t.string   "name"
+    t.string   "address"
+    t.string   "postcode"
+    t.string   "city"
+    t.integer  "kvk"
+    t.string   "btw"
+    t.string   "email"
+    t.string   "account"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "contacts", ["email"], name: "index_contacts_on_email", unique: true
 
   create_table "products", force: true do |t|
     t.string   "description"
