@@ -1,5 +1,5 @@
 FactuurApp::Application.routes.draw do
-  get "contacts/new"
+  resources :contacts
   root 'static_pages#home'
   match 'newcontact', to: 'contacts#new',       via: 'get'
   match 'home',       to: 'static_pages#home',  via: 'get'

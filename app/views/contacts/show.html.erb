@@ -1,0 +1,8 @@
+<% provide(:title, 'Contacten') %>
+<h3><%= @contact.company %></h3>
+<br>
+<%= @contact.name %> - <%= @contact.email %>
+<br>
+<%= @contact.address %>, <%= @contact.postcode %> <%= @contact.city %>
+<br>
+KvK:<%= @contact.kvk %> | BTW:<%= @contact.btw %> | IBAN: <%= @contact.account %>
