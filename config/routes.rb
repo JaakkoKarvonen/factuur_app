@@ -1,10 +1,20 @@
 FactuurApp::Application.routes.draw do
+<<<<<<< HEAD
   resources :contacts
+=======
+<<<<<<< HEAD
+  resources :products, only: [:create, :destroy]
+
+=======
+  get "contacts/new"
+>>>>>>> 3188f478a0500e916ac1e9e4f6649eb451e2d3e5
+>>>>>>> f1e3185b312ec958aa852a55d3a47be0cb8dea6d
   root 'static_pages#home'
   #deze match is misschien overbodig: match 'newcontact', to: 'contacts#new',       via: 'get'
   match 'home',       to: 'static_pages#home',  via: 'get'
   match 'myproducts', to: 'products#show',      via: 'get'
   match 'newproduct', to: 'products#new',       via: 'get'
+  match 'newproduct', to: 'products#create',       via: 'post'
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
