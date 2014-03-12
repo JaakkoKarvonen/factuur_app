@@ -1,4 +1,5 @@
 FactuurApp::Application.routes.draw do
+
   get "products/new"
   get "products/create"
   get "products/show"
@@ -6,9 +7,15 @@ FactuurApp::Application.routes.draw do
   get "products/edit"
   resources :products
 
+  resources :contacts
+
+  resources :products, only: [:create, :destroy]
+
+
   get "contacts/new"
+
   root 'static_pages#home'
-  match 'newcontact', to: 'contacts#new',       via: 'get'
+  #deze match is misschien overbodig: match 'newcontact', to: 'contacts#new',       via: 'get'
   match 'home',       to: 'static_pages#home',  via: 'get'
   match 'myproducts', to: 'products#show',      via: 'get'
   match 'newproduct', to: 'products#new',       via: 'get'

@@ -1,5 +1,5 @@
-<% provide(:title, 'Nieuw contact') %>
-<h1>Nieuw contact</h1>
+<% provide(:title, 'Wijzig contact') %>
+<h1>Wijzig contact</h1>
   <div>
     <%= form_for(@contact) do |f| %>
       <%= render 'shared/error_messages' %>
@@ -31,6 +31,6 @@
       <%= f.label 'Rekeningnummer' %>
       <%= f.text_field :account %>
 
-      <%= f.submit "Voeg contact toe", class: "btn btn-large btn-primary" %>
+      <%= f.submit "Wijzigingen opslaan", class: "btn btn-large btn-primary" %>
     <% end %>
   </div>
