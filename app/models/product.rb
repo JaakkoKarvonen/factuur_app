@@ -4,3 +4,4 @@ class Product < ActiveRecord::Base
   validates :serial, presence: true, length: { maximum: 50 }
   validates :price, presence: true
 end
+
