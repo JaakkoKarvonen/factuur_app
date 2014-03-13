@@ -1,0 +1,9 @@
+<% provide(:title, 'Producten') %>
+<h3>Producten</h3>
+<%= will_paginate %>
+<ul>
+  <% @products.each do |product| %>
+    <li><%= link_to product.name, product %> <small>(<%= product.description %>)</small></li>
+  <% end %>
+</ul>
+<%= will_paginate %>
