@@ -1,5 +1,6 @@
 FactuurApp::Application.routes.draw do
 
+  get "users/new"
   get "products/new"
   get "products/create"
   get "products/show"
@@ -17,6 +18,7 @@ FactuurApp::Application.routes.draw do
   root 'static_pages#home'
   #deze match is misschien overbodig: match 'newcontact', to: 'contacts#new',       via: 'get'
   match 'home',       to: 'static_pages#home',  via: 'get'
+  match 'signup',     to: 'users#new',          via: 'get'
   
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

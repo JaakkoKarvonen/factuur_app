@@ -12,7 +12,7 @@ describe "Products" do
   end
 
   describe "My products" do
-  	before { visit myproducts_path }
+  	before { visit products_path }
 
   	it { should have_content('Mijn producten') }
   	it { should have_title('Mijn producten') }
