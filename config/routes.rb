@@ -1,12 +1,13 @@
 FactuurApp::Application.routes.draw do
 
-  get "users/new"
+  #get "users/new"
   get "products/new"
-  get "products/create"
-  get "products/show"
-  get "products/delete"
-  get "products/edit"
+  #get "products/create"
+  #get "products/show"
+  #get "products/delete"
+  #get "products/edit"
   resources :products
+  resources :users
 
   resources :contacts
 

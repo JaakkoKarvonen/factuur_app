@@ -12,7 +12,7 @@ class ProductsController < ApplicationController
     @product = Product.new(product_params)
     if @product.save
       flash[:notice] = "Product toegevoegd"
-      redirect_to newproduct_path
+      redirect_to 'products/new'
     else
       render 'new'
     end
