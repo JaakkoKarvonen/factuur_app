@@ -5,7 +5,7 @@ describe "Products" do
   subject { page }
   
   describe "New product" do
-  	before { visit newproduct_path }
+  	before { visit products_new_path }
 
   	it { should have_content('Nieuw product') }
   	it { should have_title('Nieuw product') }
