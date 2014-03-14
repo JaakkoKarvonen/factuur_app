@@ -1,4 +1,5 @@
 class ProductsController < ApplicationController
+  before_action :signed_in_user, only: [:index, :new, :create, :show, :delete, :edit, :update]
   
   def index
     @products = Product.paginate(page: params[:page])
@@ -27,6 +28,17 @@ class ProductsController < ApplicationController
   end
 
   def edit
+    @product = Product.find(params[:id])
+  end
+
+  def update
+    @product = Product.find(params[:id])
+    if @product.update_attributes(product_params)
+      flash[:notice] = "Productgegevens bijgewerkt"
+      render 'index'
+    else
+      render 'edit'
+    end
   end
 
   private
