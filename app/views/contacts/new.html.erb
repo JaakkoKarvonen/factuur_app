@@ -2,7 +2,7 @@
 <h1>Nieuw contact</h1>
   <div>
     <%= form_for(@contact) do |f| %>
-      <%= render 'shared/error_messages' %>
+      <%= render 'shared/error_messages', object: f.object %>
 
       <%= f.label 'Bedrijfsnaam' %>
       <%= f.text_field :company %>
