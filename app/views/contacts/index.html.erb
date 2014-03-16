@@ -1,10 +1,72 @@
 <% provide(:title, 'Contacten') %>
-<h3>Contacten</h3>
-<%= will_paginate %>
-<ul>
-  <% @contacts.each do |contact| %>
-    <li><%= link_to contact.name, contact %> <small>(<%= contact.company %>)</small> <%= link_to 'Wijzig', edit_contact_path(contact) %>
-    | <%= link_to "Verwijder", contact, method: :delete, data: { confirm: "Weet u het zeker?" } %></li>
-  <% end %>
-</ul>
-<%= will_paginate %>
+
+<div class="container custom-page" style="padding-top: 30px;">
+	<h1 class="visible-sm visible-md visible-lg text-center" style="color: #428bca;"><%= yield(:title) %></h1>
+	
+	<div class="home-buttons" style="padding-bottom: 30px;">
+    	<a href="/contacts/new" class="btn btn-primary btn-lg" style="width: 200px; border:none; text-align: left;"><span class="glyphicon glyphicon-plus" style="padding-right: 5px;"></span> Voeg contact toe</a>
+  	</div>
+
+	<%= will_paginate %>
+
+	<div class="panel-group" id="accordion">
+	 <% @contacts.each do |contact| %>
+
+	  <div class="panel panel-default">
+	    <div class="panel-heading" style="background-color: #428bca; border: none; color: white;">
+	      <h4 class="panel-title">
+	        <a data-toggle="collapse" data-parent="#accordion" href="#<%= contact.id %>">
+	          <span class="glyphicon glyphicon-chevron-down" style="padding-right: 10px;"></span><%= contact.name %>
+	        </a>
+	      </h4>
+	    </div>
+	    <div id="<%= contact.id %>" class="panel-collapse collapse collapse">
+	      <div class="panel-body">
+	      	<table class="table table-condensed">
+	      		<tr>
+	      			<th style="width: 30px;">Bedrijf:</th>
+	      			<td><%= contact.company %></td>
+	      		</tr>
+	      		<tr>
+	      			<th style="width: 30px;">Adres:</th>
+	      			<td><%= contact.address %>, <%= contact.postcode %> <%= contact.city %></td>
+	      		</tr>
+	      		<tr>
+	      			<th style="width: 30px;">E-mail:</th>
+	      			<td><%= contact.email %></td>
+	      		</tr>
+	      		<tr>
+	      			<th style="width: 30px;">KvK:</th>
+	      			<td><%= contact.kvk %></td>
+	      		</tr>
+	      		<tr>
+	      			<th style="width: 30px;">BTW:</th>
+	      			<td><%= contact.btw %></td>
+	      		</tr>
+	      		<tr>
+	      			<th style="width: 30px;">IBAN:</th>
+	      			<td><%= contact.account %></td>
+	      		</tr>
+
+	      		<tr>
+	      			<td style="text-align: left; padding-top: 30px;"><%= link_to 'Wijzig', edit_contact_path(contact), class: "btn btn-primary btn-sm" %></td>
+
+	      			<td style="text-align: right; padding-top: 30px;"><%= link_to "Verwijder", contact, method: :delete, data: { confirm: "Weet u het zeker?" }, class: "btn btn-primary btn-sm" %></td>
+	      		</tr>
+	      	</table>
+	      </div>
+	    </div>
+	  </div>
+
+	 <% end %>
+	</div>
+
+	<%= will_paginate %>
+
+
+</div>
+
+
+
+
+

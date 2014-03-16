@@ -31,6 +31,8 @@
   #pdf_link {
     display: none;
   }
+
+
 }
 
 /* vul dit in bij output: <p id="pdf_link"><%= link_to "Download Invoice (PDF)", order_path(@order, :format => "pdf") %></p> */

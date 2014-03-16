@@ -5,6 +5,7 @@
     <title><%= content_for?(:title) ? yield(:title) : "Factuur App" %></title>
     <meta name="description" content="<%= content_for?(:description) ? yield(:description) : "Factuur App" %>">
     <%= stylesheet_link_tag "application", media: "all", "data-turbolinks-track" => true %>
+    <link href='http://fonts.googleapis.com/css?family=Droid+Sans:400,700' rel='stylesheet' type='text/css'>
     <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
     <%= csrf_meta_tags %>
   </head>
@@ -12,7 +13,7 @@
     <header>
       <%= render 'layouts/navigation' %>
     </header>
-    <main role="main">
+    <main style="background-color: #fff;" role="main">
        <%= render 'layouts/messages' %>
        <%= yield %>
     </main>

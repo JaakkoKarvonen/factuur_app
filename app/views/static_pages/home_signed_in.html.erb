@@ -1,5 +1,13 @@
 <% provide(:title, 'Home') %>
-<h1>Factuur app</h1>
-<p><a href="#">Nieuwe factuur</a></p>
-<p><a href="#">Mijn facturen</a></p>
-<p><a href="Contacts">Contacten</a></p>
+<div class="container custom-page">
+	<h1 class="visible-sm visible-md visible-lg text-center" style="color: #428bca;"><%= yield(:title) %></h1>
+	<div class="home-buttons" style="padding-top: 30px;">
+    <a href="#" class="btn btn-primary btn-lg" style="width: 200px; border:none; text-align: left;"><span class="glyphicon glyphicon-plus" style="padding-right: 5px;"></span> Nieuwe factuur</a>
+  </div>
+  <div class="home-buttons">
+    <a href="#" class="btn btn-primary btn-lg" style="width: 200px; border:none; text-align: left;"><span class="glyphicon glyphicon-list" style="padding-right: 5px;"></span> Mijn facturen</a>
+  </div>
+  <div class="home-buttons">
+	 <a href="/contacts" class="btn btn-primary btn-lg" style="width: 200px; border:none; text-align: left;"><span class="glyphicon glyphicon-user" style="padding-right: 5px;"></span> Contacten</a>
+  </div>
+</div>
