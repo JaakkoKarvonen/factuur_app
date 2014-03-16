@@ -18,7 +18,7 @@ class ContactsController < ApplicationController
     @contact = Contact.new(contact_params)
     if @contact.save
       flash[:notice] = "Contact is succesvol toegevoegd!"
-      redirect_to @contact
+      redirect_to "/contacts"
     else
       render 'new'
     end
@@ -32,7 +32,7 @@ class ContactsController < ApplicationController
     @contact = Contact.find_by_id(params[:id])
     if @contact.update_attributes(contact_params)
       flash[:notice] = "Contact gewijzigd!"
-      redirect_to @contact
+      redirect_to "/contacts"
     else
       render 'edit'
     end

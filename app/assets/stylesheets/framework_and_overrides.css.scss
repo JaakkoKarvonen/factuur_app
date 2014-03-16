@@ -1,6 +1,11 @@
 // import the CSS framework
 @import "bootstrap";
 
+body {
+  font-family: 'Droid Sans', sans-serif; 
+}
+
+
 // make all images responsive by default
 img {
   @extend .img-responsive;
