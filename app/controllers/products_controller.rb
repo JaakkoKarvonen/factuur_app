@@ -13,7 +13,7 @@ class ProductsController < ApplicationController
     @product = Product.new(product_params)
     if @product.save
       flash[:notice] = "Product toegevoegd"
-      redirect_to 'products/new'
+      redirect_to '/products'
     else
       render 'new'
     end
@@ -32,13 +32,19 @@ class ProductsController < ApplicationController
   end
 
   def update
-    @product = Product.find(params[:id])
+    @product = Product.find_by_id(params[:id])
     if @product.update_attributes(product_params)
-      flash[:notice] = "Productgegevens bijgewerkt"
-      render 'index'
+      flash[:notice] = "Product gewijzigd!"
+      redirect_to "/products"
     else
       render 'edit'
     end
+  end
+
+  def destroy
+    Product.find(params[:id]).destroy
+    flash[:notice] = "Product verwijderd."
+    redirect_to products_url
   end
 
   private
