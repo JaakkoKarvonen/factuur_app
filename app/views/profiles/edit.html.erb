@@ -1,0 +1,71 @@
+<% provide(:title, 'Wijzig profiel') %>
+<div class="container custom-page" style="padding-top: 30px;">
+  <h1 class="visible-sm visible-md visible-lg text-center" style="color: #428bca;"><%= yield(:title) %></h1>
+  <div>
+    <%= form_for(@profile) do |f| %>
+      <%= render 'shared/error_messages', object: f.object %>
+
+      <div class="form-group">
+        <%= f.label 'Bedrijfsnaam' %>
+        <%= f.text_field :company, class: "form-control" %>
+      </div>
+      
+      <div class="form-group">
+        <%= f.label 'Straatnaam + huisnummer' %>
+        <%= f.text_field :address, class: "form-control" %>
+      </div>
+
+      <div class="form-group">
+        <%= f.label 'Postcode' %>
+        <%= f.text_field :postcode, class: "form-control" %>
+      </div>
+
+      <div class="form-group">
+        <%= f.label 'Plaatsnaam' %>
+        <%= f.text_field :city, class: "form-control" %>
+      </div>
+
+      <div class="form-group">
+        <%= f.label 'Website' %>
+        <%= f.text_field :site, class: "form-control" %>
+      </div>
+
+      <div class="form-group">
+        <%= f.label 'E-mail' %>
+        <%= f.text_field :email, class: "form-control" %>
+      </div>
+
+      <div class="form-group">
+        <%= f.label 'KvK nummer' %>
+        <%= f.text_field :kvk, class: "form-control" %>
+      </div>
+
+      <div class="form-group">
+        <%= f.label 'BTW nummer' %>
+        <%= f.text_field :btw, class: "form-control" %>
+      </div>
+
+      <div class="form-group">
+        <%= f.label 'IBAN' %>
+        <%= f.text_field :account, class: "form-control" %>
+      </div>
+
+      <div class="form-group">
+        <%= f.label 'Contactpersoon' %>
+        <%= f.text_field :name, class: "form-control" %>
+      </div>
+
+      <div class="form-group">
+        <%= f.label 'Telefoonnummer' %>
+        <%= f.text_field :phone, class: "form-control" %>
+      </div>
+      
+      <table class="table">
+        <tr>
+          <td style="text-align: left; padding: 20px 0px 10px 0px; border:none;"><a href="/home" class="btn btn-primary btn-sm" style="border:none;">Cancel</a></td>
+          <td style="text-align: right; padding: 20px 0px 10px 0px; border:none;"><%= f.submit "Opslaan", class: "btn btn-primary btn-sm", style: "border:none;" %></td>
+        </tr>
+      </table>   
+    <% end %>
+  </div>
+</div>

@@ -1,26 +1,36 @@
 <% provide(:title, 'Nieuw product') %>
-<h1>Nieuw product</h1>
-
-<div class="row">
-  <div class="span6 offset3">
-  	<%= form_for(@product) do |f| %>
+<div class="container custom-page">
+  <h1 class="visible-sm visible-md visible-lg text-center" style="color: #428bca;"><%= yield(:title) %></h1>
+  <div style="padding-top: 30px;">
+    <%= form_for(@product) do |f| %>
       <%= render 'shared/error_messages', object: f.object %>
 
-  	  <%= f.label :name, "Naam" %>
-      <%= f.text_field :name %>
+      <div class="form-group">
+        <%= f.label "Naam" %>
+        <%= f.text_field :name, class: "form-control", placeholder: "Naam product" %>
+      </div>
+      
+      <div class="form-group">
+        <%= f.label 'Omschrijving' %>
+        <%= f.text_field :description, class: "form-control", placeholder: "Omschrijving" %>
+      </div>
 
-      <%= f.label :description, "Omschrijving" %>
-  	  <%= f.text_field :description %>
+      <div class="form-group">
+        <%= f.label 'Serienummer' %>
+        <%= f.text_field :serial, class: "form-control", placeholder: "Serienummer" %>
+      </div>
 
-  	  <%= f.label :serial, "Serienummer" %>
-  	  <%= f.text_field :serial %>
+      <div class="form-group">
+        <%= f.label 'Prijs' %>
+        <%= f.text_field :price, class: "form-control", placeholder: "Prijs in euro's" %>
+      </div>
 
-  	  <%= f.label :price, "Prijs" %>
-  	  <%= f.text_field :price %>
-
-  	  <%= f.submit "Toevoegen", class: "btn btn-large btn-primary" %>
-  	<% end %>
-
+      <table class="table">
+        <tr>
+          <td style="text-align: left; padding: 20px 0px 10px 0px; border:none;"><a href="/products" class="btn btn-primary btn-sm" style="border:none;">Terug</a></td>
+          <td style="text-align: right; padding: 20px 0px 10px 0px; border:none;"><%= f.submit "Voeg product toe", class: "btn btn-primary btn-sm", style: "border:none;" %></td>
+        </tr>
+      </table>   
+    <% end %>
   </div>
 </div>
-

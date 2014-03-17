@@ -11,7 +11,7 @@ class UsersController < ApplicationController
     if @user.save
       sign_in @user
       flash[:notice] = "Welkom"
-      redirect_to @user
+      redirect_to "/home"
     else
       render 'new'
     end

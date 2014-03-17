@@ -1,18 +1,10 @@
 <% provide(:title, 'Home') %>
-<h1>Factuur App</h1>
-<h3>Welkom bij de factuur app</h3>
-<p>Om gebruik te kunnen maken van deze app dient u in te loggen of zich aan te melden:</p>
-<p><a href="signin">Inloggen</a></p>
-<p><a href="signup">Aanmelden</a></p>
-
-
-<% provide(:title, 'Home') %>
 <div class="container custom-page">
     <h1 class="visible-sm visible-md visible-lg text-center" style="color: #428bca;"><%= yield(:title) %></h1>
     <div class="home-buttons" style="padding-top: 30px;">
-    	<a href="/singup" class="btn btn-primary btn-lg" style="width: 200px; border:none;">Inloggen</a>
+    	<a href="/signin" class="btn btn-primary btn-lg" style="width: 200px; border:none;">Inloggen</a>
   	</div>
   	<div class="home-buttons">
-    	<a href="/signin" class="btn btn-primary btn-lg" style="width: 200px; border:none;">Aanmelden</a>
+    	<a href="/signup" class="btn btn-primary btn-lg" style="width: 200px; border:none;">Aanmelden</a>
   	</div>
 </div>

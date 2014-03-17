@@ -1,2 +1,36 @@
-<h1>Products#edit</h1>
-<p>Find me in app/views/products/edit.html.erb</p>
+<% provide(:title, 'Wijzig product') %>
+<div class="container custom-page">
+  <h1 class="visible-sm visible-md visible-lg text-center" style="color: #428bca;"><%= yield(:title) %></h1>
+  <div style="padding-top: 30px;">
+    <%= form_for(@product) do |f| %>
+      <%= render 'shared/error_messages', object: f.object %>
+
+      <div class="form-group">
+        <%= f.label "Naam" %>
+        <%= f.text_field :name, class: "form-control", placeholder: "Naam product" %>
+      </div>
+      
+      <div class="form-group">
+        <%= f.label 'Omschrijving' %>
+        <%= f.text_field :description, class: "form-control", placeholder: "Omschrijving" %>
+      </div>
+
+      <div class="form-group">
+        <%= f.label 'Serienummer' %>
+        <%= f.text_field :serial, class: "form-control", placeholder: "Serienummer" %>
+      </div>
+
+      <div class="form-group">
+        <%= f.label 'Prijs' %>
+        <%= f.text_field :price, class: "form-control", placeholder: "Prijs in euro's" %>
+      </div>
+
+      <table class="table">
+        <tr>
+          <td style="text-align: left; padding: 20px 0px 10px 0px; border:none;"><a href="/products" class="btn btn-primary btn-sm" style="border:none;">Terug</a></td>
+          <td style="text-align: right; padding: 20px 0px 10px 0px; border:none;"><%= f.submit "Opslaan", class: "btn btn-primary btn-sm", style: "border:none;" %></td>
+        </tr>
+      </table>   
+    <% end %>
+  </div>
+</div>

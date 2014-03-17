@@ -1,0 +1,49 @@
+<% provide(:title, 'Profiel') %>
+
+<div class="container custom-page" style="padding-top: 30px;">
+	<h1 class="visible-sm visible-md visible-lg text-center" style="color: #428bca;"><%= yield(:title) %></h1>
+		<table class="table table-condensed">
+	  		<tr>
+	  			<th style="width: 30px;">Bedrijf:</th>
+	  			<td><%= @profile.company %></td>
+	  		</tr>
+	  		<tr>
+	  			<th style="width: 30px;">Adres:</th>
+	  			<td><%= @profile.address %>, <%= @profile.postcode %> <%= @profile.city %></td>
+	  		</tr>
+	  		<tr>
+	  			<th style="width: 30px;">Website:</th>
+	  			<td><%= @profile.site %></td>
+	  		</tr>
+	  		<tr>
+	  			<th style="width: 30px;">E-mail:</th>
+	  			<td><%= @profile.email %></td>
+	  		</tr>
+	  		<tr>
+	  			<th style="width: 30px;">KvK nummer:</th>
+	  			<td><%= @profile.kvk %></td>
+	  		</tr>
+	  		<tr>
+	  			<th style="width: 30px;">BTW nummer:</th>
+	  			<td><%= @profile.btw %></td>
+	  		</tr>
+	  		<tr>
+	  			<th style="width: 30px;">IBAN:</th>
+	  			<td><%= @profile.account %></td>
+	  		</tr>
+	  		<tr>
+	  			<th style="width: 30px;">Contactpersoon:</th>
+	  			<td><%= @profile.name %></td>
+	  		</tr>
+	  		<tr>
+	  			<th style="width: 30px;">Telefoon:</th>
+	  			<td><%= @profile.phone %></td>
+	  		</tr>
+
+	  		<tr>
+	  			<td></td>
+	  			<td style="text-align: right; padding-top: 30px;"><%= link_to 'Wijzig', edit_profile_path(@profile), class: "btn btn-primary btn-sm" %></td>
+	  		</tr>
+	  	</table>
+</div>
+
