@@ -1,0 +1,56 @@
+<% provide(:title, 'Nieuwe factuur') %>
+<div class="container custom-page">
+  <h1 class="visible-sm visible-md visible-lg text-center" style="color: #428bca;"><%= yield(:title) %></h1>
+  <div style="padding-top: 30px;">
+    <%= form_for(@invoice) do |f| %>
+      <%= render 'shared/error_messages', object: f.object %>
+
+      <div class="form-group">
+        <%= f.label 'Contact' %>
+        <select class="form-control">
+		  <option>Contact 1</option>
+		  <option>Contact 2</option>
+		  <option>Contact 3</option>
+		  <option>Contact 4</option>
+		  <option>Contact 5</option>
+		</select>
+	  </div>
+
+	  <div class="form-group">
+		<%= f.label 'Factuurdatum' %>
+		<%= f.date_field :date, class: "form-control" %>
+	  </div>
+
+	  
+
+      
+
+	  <table class="table">
+        <tr>
+          <td style="padding: 20px 10px 10px 0px; border:none;"><div class="form-group">
+	        <%= f.label 'Product' %>
+	        <select class="form-control">
+			  <option>Product 1</option>
+			  <option>Product 2</option>
+			  <option>Product 3</option>
+			  <option>Product 4</option>
+			  <option>Product 5</option>
+			</select>
+		  </div>
+		</td>
+          <td style="padding: 20px 0px 10px 0px; border:none;"><div class="form-group">
+        <%= f.label 'Aantal' %>
+        <%= f.text_field :amount, class: "form-control" %>
+      </div></td>
+        </tr>
+      </table>
+      
+      <table class="table">
+        <tr>
+          <td style="text-align: left; padding: 20px 0px 10px 0px; border:none;"><a href="/invoices" class="btn btn-primary btn-sm" style="border:none;">Cancel</a></td>
+          <td style="text-align: right; padding: 20px 0px 10px 0px; border:none;"><%= f.submit "Opslaan", class: "btn btn-primary btn-sm", style: "border:none;" %></td>
+        </tr>
+      </table>   
+    <% end %>
+  </div>
+</div>

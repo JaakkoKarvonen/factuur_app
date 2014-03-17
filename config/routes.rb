@@ -1,5 +1,6 @@
 FactuurApp::Application.routes.draw do
 
+  get "invoices/new"
   get "profiles/new"
   #get "users/new"
   get "products/new"
@@ -7,11 +8,13 @@ FactuurApp::Application.routes.draw do
   #get "products/show"
   #get "products/delete"
   #get "products/edit"
+
   resources :products
   resources :users
   resources :sessions, only: [:new, :create, :destroy]
   resources :contacts
   resources :profiles
+  resources :invoices
 
   #resources :products, only: [:create, :destroy]
 
