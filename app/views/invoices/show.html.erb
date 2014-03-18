@@ -63,13 +63,13 @@
 		 			<th style="text-align: right;">Bedrag in [valuta]</th>
 		 		</tr>
 
-		 		<% @invoices.each do |invoice| %>
+		 		
 		 			<tr>
-		 				<td><%= invoice.amount %></td>
+		 				<td><%= @invoice.amount %></td>
 		 				<td><%= Product.find(@productid).name %></td>
 		 				<td style="text-align: right;"><%= Product.find(@productid).price %></td>
 		 			</tr>
-		 		<% end %>
+		 		
 
 		 		<tr>
 		 			<td></td><td></td><td></td>
@@ -100,9 +100,30 @@
 
 
 	<div class="row">
-		<div class="col-sm-2"><%= Contact.find(@contactid).company %></div>
-		<div class="col-sm-2 col-sm-offset-3"><%= Contact.find(@contactid).company %></div>
-		<div class="col-sm-2 col-sm-offset-3"><%= Contact.find(@contactid).company %></div>
+		<div class="col-sm-2 text-center" style="padding-top: 10px;">
+			<span>
+				<strong>IBAN:</strong><br>
+				<%= Contact.find(@contactid).company %>
+			</span>
+		</div>
+		<div class="col-sm-2 col-sm-offset-3 text-center" style="padding-top: 10px;">
+			<span>
+				<strong>Factuurnummer:</strong><br>
+				<%= Contact.find(@contactid).account %>
+			</span>
+		</div>
+		<div class="col-sm-2 col-sm-offset-3 text-center" style="padding-top: 10px;">
+			<span>
+				<strong>Factuurbedrag in [valuta]:</strong><br>
+				<%= Product.find(@productid).price %>
+			</span>
+		</div>
+	</div>
+
+	<div class="row">
+		<div class="col-sm-12 text-center" style="padding-top: 30px;">
+			<small>Wij verzoeken u vriendelijk het verschuldigde bedrag binnen 14 dagen over te maken onder vermelding van het factuurnummer.</small>
+		</div>
 	</div>
 
   	
