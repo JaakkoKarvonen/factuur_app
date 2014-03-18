@@ -1,7 +1,7 @@
 <% @contactid = @invoice.contact_id %>
 <% @productid = @invoice.product_id %>
 <% @valuta = "€" %>
-<% @btw = 0.21 %>
+<% @btw_procent = 0.21 %>
 <% provide(:title, Contact.find(@contactid).company) %>
 <div class="container custom-page" style="padding-top: 30px;">
   <h1 class="visible-sm visible-md visible-lg text-center" style="color: #428bca;"><%= yield(:title) %></h1>
@@ -85,14 +85,14 @@
 
 		 		<tr>
 		 			<td></td>
-		 			<th style="text-align: right;">BTW<%= @btw %>%:</th>
-		 			<td style="text-align: right;"><%= @valuta %><%= @btwx = @subtotaal * @btw%></td>
+		 			<th style="text-align: right;">BTW<%= @btw_procent %>%:</th>
+		 			<td style="text-align: right;"><%= @valuta %><%= @btw_totaal = @subtotaal * @btw_procent%></td>
 		 		</tr>
 
 		 		<tr>
 		 			<td></td>
 		 			<th style="text-align: right;">Totaal:</th>
-		 			<td style="text-align: right;"><%= @valuta %><%= @subtotaal + @btwx %></td>
+		 			<td style="text-align: right;"><%= @valuta %><%= @subtotaal + @btw_totaal %></td>
 		 		</tr>
 		 	</table>
 		</div>
