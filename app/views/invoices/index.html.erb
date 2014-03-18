@@ -10,8 +10,12 @@
 	<%= will_paginate %>
 
 	 <% count = 2014001 %>
-	 <% @contacts.each do |contact| %>
-	 	<a href="#" class="btn btn-primary btn-lg btn-block"><%= contact.company %> <%= count %></a>
+	 <% @invoices.each do |invoice| %>
+	 	<a href="/invoices/<%= invoice.id %>" class="btn btn-primary btn-lg btn-block">
+	 		<% @contactid = invoice.contact_id %>
+	 		<%= Contact.find(@contactid).company %>
+	 		<%= count %>
+	 	</a>
 	 <% count = count + 1 %>	
 	 <% end %>
 

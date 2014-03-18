@@ -3,7 +3,6 @@ class InvoicesController < ApplicationController
 
   def index
     @invoices = Invoice.paginate(page: params[:page])
-    @contacts = Contact.paginate(page: params[:page])
   end
 
   def show
@@ -12,15 +11,12 @@ class InvoicesController < ApplicationController
 
   def new
   	@invoice = Invoice.new
-    @contacts = Contact.all
-    @products = Product.all
   end
 
   def create
     @invoice = Invoice.new(invoice_params)
     if @invoice.save
-      flash[:notice] = "Factuur is succesvol aangemaakt!"
-      redirect_to "/invoices"
+      redirect_to @invoice
     else
       render 'new'
     end
@@ -33,7 +29,7 @@ class InvoicesController < ApplicationController
   def update
     @invoice = Invoice.find_by_id(params[:id])
     if @invoice.update_attributes(invoice_params)
-      flash[:notice] = "Factuur gewijzigd!"
+      flash[:notice] = "Factuur is succesvol aangemaakt!"
       redirect_to "/invoices"
     else
       render 'edit'
@@ -49,6 +45,6 @@ class InvoicesController < ApplicationController
   private
 
     def invoice_params
-      params.require(:invoice).permit(:contactid, :date, :productid, :amount)
+      params.require(:invoice).permit(:contact_id, :date, :product_id, :amount)
     end
 end

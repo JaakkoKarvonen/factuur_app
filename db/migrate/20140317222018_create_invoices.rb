@@ -1,9 +1,10 @@
 class CreateInvoices < ActiveRecord::Migration
   def change
+  	drop_table :invoices
     create_table :invoices do |t|
-      t.integer :contactid
+      t.belongs_to :contact
+      t.belongs_to :product
       t.date :date
-      t.integer :productid
       t.integer :amount
 
       t.timestamps

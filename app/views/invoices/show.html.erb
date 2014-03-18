@@ -1,2 +1,51 @@
-<h1>Invoices#new</h1>
-<p>Find me in app/views/invoices/new.html.erb</p>
+<% @contactid = @invoice.contact_id %>
+<% provide(:title, Contact.find(@contactid).company) %>
+<div class="container custom-page" style="padding-top: 30px;">
+  <h1 class="visible-sm visible-md visible-lg text-center" style="color: #428bca;"><%= yield(:title) %></h1>
+
+  	<div class="row" style="padding-right: 30px;">
+		<div class="col-xs-7">
+			<p>
+				<%= Contact.find(@contactid).company %><br>
+				T.a.v. <%= Contact.find(@contactid).name %><br>
+				<%= Contact.find(@contactid).address %><br>
+				<%= Contact.find(@contactid).postcode %> <%= Contact.find(@contactid).city %>
+			</p>
+		</div>
+
+
+		<div class="col-xs-4 col-xs-offset-1">
+			<small>
+				FactuurApp<br>
+				Science Park 900<br>
+				1000AA Amsterdam<br>
+				www.factuurapp.nl<br>
+				info@factuurapp.nl<br>
+				Kvk: 12345678<br>
+				BTW: 123456789B12<br>
+				IBAN: NL12ABCD1234567890<br>
+				Tel: 06-12345678
+			</small>
+		</div>
+	</div>
+
+
+
+
+	<div class="row" style="padding-right: 30px;">
+		<div class="col-xs-2"><%= Contact.find(@contactid).company %></div>
+		<div class="col-xs-2 col-xs-offset-3"><%= Contact.find(@contactid).company %></div>
+		<div class="col-xs-2 col-xs-offset-3"><%= Contact.find(@contactid).company %></div>
+	</div>
+
+  	
+
+      
+	  <table class="table">
+	    <tr>
+	      <td style="text-align: left; padding: 20px 0px 10px 0px; border:none;"><a href="/invoices" class="btn btn-primary btn-sm" style="border:none;">Terug</a></td>
+	      <td style="text-align: right; padding: 20px 0px 10px 0px; border:none;"><a href="/invoices" class="btn btn-primary btn-sm" style="border:none;">Exporteer Pdf</a></td>
+	    </tr>
+	  </table>   
+
+</div>

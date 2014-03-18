@@ -1,8 +1,9 @@
 class Invoice < ActiveRecord::Base
-	has_and_belongs_to_many :contacts
-	validates :contactid, presence: true
+	belongs_to :contact
+	belongs_to :product
+	validates :contact_id, presence: true
 	validates :date, presence: true
-	validates :productid, presence: true
+	validates :product_id, presence: true
 	VALID_AMOUNT_REGEX = /\A[0-9]{1,}\z/i
 	validates :amount, format: { with: VALID_AMOUNT_REGEX }
 end

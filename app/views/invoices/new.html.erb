@@ -7,38 +7,28 @@
 
       <div class="form-group">
         <%= f.label 'Contact' %>
-        <select class="form-control">
-         <% @contacts.each do |contact| %>
-		  <option><%= contact.company %>: <%= contact.name %></option>
-		 <% end %>
-		</select>
-	  </div>
+        <%= f.collection_select(:contact_id, Contact.all, :id, :name, {prompt: true}, class: "form-control") %>
+      </div>
 
-	  <div class="form-group">
-		<%= f.label 'Factuurdatum' %>
-		<%= f.date_field :date, class: "form-control" %>
-	  </div>
+  	  <div class="form-group">
+    		<%= f.label 'Factuurdatum' %>
+    		<%= f.date_field :date, class: "form-control" %>
+  	  </div>
 
-	  
-
-      
-
-	  <table class="table">
+  	  <table class="table">
         <tr>
-            <td style="padding: 20px 10px 10px 0px; border:none;">
-            	<div class="form-group">
-			        <%= f.label 'Product' %>
-			        <select class="form-control">
-			         <% @products.each do |product| %>
-					  <option><%= product.name %> (snr: <%= product.serial %>)</option>
-					 <% end %>
-					</select>
-			  </div>
-			</td>
-          <td style="padding: 20px 0px 10px 0px; border:none;"><div class="form-group">
-        <%= f.label 'Aantal' %>
-        <%= f.text_field :amount, class: "form-control" %>
-      </div></td>
+          <td style="padding: 20px 10px 10px 0px; border:none;">
+            <div class="form-group">
+              <%= f.label 'Product' %>
+              <%= f.collection_select(:product_id, Product.all, :id, :name, {prompt: true}, class: "form-control") %>
+            </div>
+  			  </td>
+            <td style="padding: 20px 0px 10px 0px; border:none;">
+              <div class="form-group">
+                <%= f.label 'Aantal' %>
+                <%= f.text_field :amount, class: "form-control" %>
+              </div>
+            </td>
         </tr>
       </table>
       
