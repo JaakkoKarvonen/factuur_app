@@ -85,14 +85,14 @@
 
 		 		<tr>
 		 			<td></td>
-		 			<th style="text-align: right;">BTW<%= @btw_procent %>%:</th>
+		 			<th style="text-align: right;">BTW <%= @btw_procent * 100 %>%:</th>
 		 			<td style="text-align: right;"><%= @valuta %><%= @btw_totaal = @subtotaal * @btw_procent%></td>
 		 		</tr>
 
 		 		<tr>
 		 			<td></td>
 		 			<th style="text-align: right;">Totaal:</th>
-		 			<td style="text-align: right;"><%= @valuta %><%= @subtotaal + @btw_totaal %></td>
+		 			<td style="text-align: right;"><%= @valuta %><%= @totaal = @subtotaal + @btw_totaal %></td>
 		 		</tr>
 		 	</table>
 		</div>
@@ -105,19 +105,19 @@
 		<div class="col-sm-2 text-center" style="padding-top: 10px;">
 			<span>
 				<strong>IBAN:</strong><br>
-				<%= Contact.find(@contactid).company %>
-			</span>
-		</div>
-		<div class="col-sm-2 col-sm-offset-3 text-center" style="padding-top: 10px;">
-			<span>
-				<strong>Factuurnummer:</strong><br>
 				<%= Contact.find(@contactid).account %>
 			</span>
 		</div>
 		<div class="col-sm-2 col-sm-offset-3 text-center" style="padding-top: 10px;">
 			<span>
-				<strong>Factuurbedrag in <%= @valuta %>:</strong><br>
-				<%= Product.find(@productid).price %>
+				<strong>Factuurnummer:</strong><br>
+				Moet nog gefixt worden
+			</span>
+		</div>
+		<div class="col-sm-2 col-sm-offset-3 text-center" style="padding-top: 10px;">
+			<span>
+				<strong>Factuurbedrag:</strong><br>
+				<%= @valuta %><%= @totaal %>
 			</span>
 		</div>
 	</div>
