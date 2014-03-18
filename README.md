@@ -25,27 +25,3 @@
 	<li>PDFKit</li>
 	<li>Paperclip</li>
 </ul>
-
-<h3>Taakverdeling</h3>
-<ul>
-	<li>Home (signin/signup): David</li>
-	<li>Facturen: Jaakko</li>
-	<li>Contacten: Jaakko</li>
-	<li>Producten: David</li>
-	<li>Profiel: Jaakko</li>
-	<li>Settings: David</li>
-	<li>User authentication/sessions: David</li>
-	<li>Relationships: Jaakko & David</li>
-	<li>CSS: Jaakko</li>
-</ul>
-
-<h3>Tables</h3>
-<ul>
-	<li><strong>Contacts:</strong> id(int), company(str), name(str), address(str), postcode(str), city(str), kvk(int), btw(str), email(str), account(str), created_at(datetime), updated_at(datetime)</li>
-	<li><strong>Products:</strong> id(int), name(str), description(str), serial(str), price(int), created_at(datetime), updated_at(datetime)</li>
-	<li><strong>Users:</strong> id(int), name(str), email(str), created_at(datetime), updated_at(datetime), password_digest(str), remember_token(str)</li>
-	<li><strong>Profiles:</strong> id(int), company(str), name(str), address(str), postcode(str), city(str), kvk(int), btw(str), email(str), account(str), phone(int), site(str), created_at(datetime), updated_at(datetime)</li>
-	<li><strong>Invoices:</strong> id(int), contactid(int), date(date), productid(int), amount(int), created_at(datetime), updated_at(datetime)</li>
-	<li><strong>+ Relational databases</strong></li>
-</ul>
-
