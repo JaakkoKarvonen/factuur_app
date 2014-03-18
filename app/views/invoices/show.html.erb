@@ -1,5 +1,7 @@
 <% @contactid = @invoice.contact_id %>
 <% @productid = @invoice.product_id %>
+<% @valuta = "€" %>
+<% @btw = 0.21 %>
 <% provide(:title, Contact.find(@contactid).company) %>
 <div class="container custom-page" style="padding-top: 30px;">
   <h1 class="visible-sm visible-md visible-lg text-center" style="color: #428bca;"><%= yield(:title) %></h1>
@@ -58,16 +60,16 @@
 		<div class="table-responsive">
 		 	<table class="table">
 		 		<tr>
-		 			<th>Aantal</th>
-		 			<th>Product</th>
-		 			<th style="text-align: right;">Bedrag in [valuta]</th>
+		 			<th style="width: 15%;">Aantal</th>
+		 			<th style="width: 65%;">Product</th>
+		 			<th style="width: 20%; text-align: right;">Bedrag in [valuta]</th>
 		 		</tr>
 
 		 		
 		 			<tr>
 		 				<td><%= @invoice.amount %></td>
 		 				<td><%= Product.find(@productid).name %></td>
-		 				<td style="text-align: right;"><%= Product.find(@productid).price %></td>
+		 				<td style="text-align: right;"><%= @valuta %><%= Product.find(@productid).price %></td>
 		 			</tr>
 		 		
 
@@ -78,19 +80,19 @@
 		 		<tr>
 		 			<td></td>
 		 			<th style="text-align: right;">Subtotaal:</th>
-		 			<td></td>
+		 			<td style="text-align: right;"><%= @valuta %><%= @subtotaal = @invoice.amount * Product.find(@productid).price %></td>
 		 		</tr>
 
 		 		<tr>
 		 			<td></td>
-		 			<th style="text-align: right;">BTW[percentage]%:</th>
-		 			<td></td>
+		 			<th style="text-align: right;">BTW<%= @btw %>%:</th>
+		 			<td style="text-align: right;"><%= @valuta %><%= @btwx = @subtotaal * @btw%></td>
 		 		</tr>
 
 		 		<tr>
 		 			<td></td>
 		 			<th style="text-align: right;">Totaal:</th>
-		 			<td></td>
+		 			<td style="text-align: right;"><%= @valuta %><%= @subtotaal + @btwx %></td>
 		 		</tr>
 		 	</table>
 		</div>
@@ -114,7 +116,7 @@
 		</div>
 		<div class="col-sm-2 col-sm-offset-3 text-center" style="padding-top: 10px;">
 			<span>
-				<strong>Factuurbedrag in [valuta]:</strong><br>
+				<strong>Factuurbedrag in <%= @valuta %>:</strong><br>
 				<%= Product.find(@productid).price %>
 			</span>
 		</div>
