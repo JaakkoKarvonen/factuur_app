@@ -7,6 +7,7 @@ class InvoicesController < ApplicationController
 
   def show
     @invoice = Invoice.find(params[:id])
+    @invoices = Invoice.paginate(page: params[:page])
   end
 
   def new
