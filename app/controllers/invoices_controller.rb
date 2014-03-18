@@ -3,6 +3,7 @@ class InvoicesController < ApplicationController
 
   def index
     @invoices = Invoice.paginate(page: params[:page])
+    @contacts = Contact.paginate(page: params[:page])
   end
 
   def show
@@ -11,6 +12,8 @@ class InvoicesController < ApplicationController
 
   def new
   	@invoice = Invoice.new
+    @contacts = Contact.all
+    @products = Product.all
   end
 
   def create

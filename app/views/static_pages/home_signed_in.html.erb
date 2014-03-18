@@ -1,11 +1,15 @@
 <% provide(:title, 'Home') %>
-<div class="container custom-page">
+<div class="container custom-page"  style="padding-top: 30px;">
 	<h1 class="visible-sm visible-md visible-lg text-center" style="color: #428bca;"><%= yield(:title) %></h1>
-	<div class="home-buttons" style="padding-top: 30px;">
-    <a href="#" class="btn btn-primary btn-lg" style="width: 200px; border:none; text-align: left;"><span class="glyphicon glyphicon-plus" style="padding-right: 5px;"></span> Nieuwe factuur</a>
+	<div class="home-buttons">
+    <a href="/invoices/new" class="btn btn-primary btn-lg" style="width: 200px; border:none; text-align: left;"><span class="glyphicon glyphicon-plus" style="padding-right: 5px;"></span> Nieuwe factuur</a>
   </div>
   <div class="home-buttons">
-    <a href="#" class="btn btn-primary btn-lg" style="width: 200px; border:none; text-align: left;"><span class="glyphicon glyphicon-list" style="padding-right: 5px;"></span> Mijn facturen</a>
+    <a href="/invoices" class="btn btn-primary btn-lg" style="width: 200px; border:none; text-align: left;"><span class="glyphicon glyphicon-list" style="padding-right: 5px;"></span> Mijn facturen</a>
+  </div>
+  <br>
+  <div class="home-buttons">
+    <a href="/contacts/new" class="btn btn-primary btn-lg" style="width: 200px; border:none; text-align: left;"><span class="glyphicon glyphicon-plus" style="padding-right: 5px;"></span> Nieuw contact</a>
   </div>
   <div class="home-buttons">
 	 <a href="/contacts" class="btn btn-primary btn-lg" style="width: 200px; border:none; text-align: left;"><span class="glyphicon glyphicon-user" style="padding-right: 5px;"></span> Contacten</a>

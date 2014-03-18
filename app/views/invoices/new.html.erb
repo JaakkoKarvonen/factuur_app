@@ -8,11 +8,9 @@
       <div class="form-group">
         <%= f.label 'Contact' %>
         <select class="form-control">
-		  <option>Contact 1</option>
-		  <option>Contact 2</option>
-		  <option>Contact 3</option>
-		  <option>Contact 4</option>
-		  <option>Contact 5</option>
+         <% @contacts.each do |contact| %>
+		  <option><%= contact.company %>: <%= contact.name %></option>
+		 <% end %>
 		</select>
 	  </div>
 
@@ -27,17 +25,16 @@
 
 	  <table class="table">
         <tr>
-          <td style="padding: 20px 10px 10px 0px; border:none;"><div class="form-group">
-	        <%= f.label 'Product' %>
-	        <select class="form-control">
-			  <option>Product 1</option>
-			  <option>Product 2</option>
-			  <option>Product 3</option>
-			  <option>Product 4</option>
-			  <option>Product 5</option>
-			</select>
-		  </div>
-		</td>
+            <td style="padding: 20px 10px 10px 0px; border:none;">
+            	<div class="form-group">
+			        <%= f.label 'Product' %>
+			        <select class="form-control">
+			         <% @products.each do |product| %>
+					  <option><%= product.name %> (snr: <%= product.serial %>)</option>
+					 <% end %>
+					</select>
+			  </div>
+			</td>
           <td style="padding: 20px 0px 10px 0px; border:none;"><div class="form-group">
         <%= f.label 'Aantal' %>
         <%= f.text_field :amount, class: "form-control" %>
@@ -47,7 +44,7 @@
       
       <table class="table">
         <tr>
-          <td style="text-align: left; padding: 20px 0px 10px 0px; border:none;"><a href="/invoices" class="btn btn-primary btn-sm" style="border:none;">Cancel</a></td>
+          <td style="text-align: left; padding: 20px 0px 10px 0px; border:none;"><a href="/invoices" class="btn btn-primary btn-sm" style="border:none;">Annuleren</a></td>
           <td style="text-align: right; padding: 20px 0px 10px 0px; border:none;"><%= f.submit "Opslaan", class: "btn btn-primary btn-sm", style: "border:none;" %></td>
         </tr>
       </table>   
