@@ -6,14 +6,14 @@
 <h3>Features</h3>
 <ul>
 	<li>Aanmelden + inloggen gebruiker d.m.v. emailadres & wachtwoord.</li>
-	<li>Eigen bedrijfsprofiel aanmaken: naam, adres, emailadres, btw-nr, kvk-nr, rekeningnr, logo.</li>
+	<li>Eigen bedrijfsprofiel aanmaken: bedrijfsnaam, contactpersoon, adres, website, emailadres, telefoonnr, btw-nr, kvk-nr, rekeningnr.</li>
 	<li>Factuurinstellingen wijzigen: valuta, betalingstermijn, betalingscondities, BTW-percentage.</li>
-	<li>Nieuwe contacten toevoegen: bedrijfsnaam, contactpersoon, adres, emailadres.</li>
+	<li>Nieuwe contacten toevoegen: bedrijfsnaam, contactpersoon, adres, emailadres, btw-nr, kvk-nr, rekeningnr.</li>
 	<li>Contacten wijzigen/verwijderen.</li>
-	<li>Producten toevoegen: productnaam, serienr, prijs.</li>
+	<li>Producten toevoegen: productnaam, omschrijving, serienr, prijs.</li>
 	<li>Producten wijzigen/verwijderen.</li>
 	<li>Snel nieuwe factuur aanmaken d.m.v. opgeslagen bedrijfsprofiel, factuurinstellingen, contacten en producten.</li>
-	<li>Alle facturen bekijken/verwijderen via Mijn Facturen.</li>
+	<li>Facturen inzien/verwijderen/verzenden in pdf-formaat.</li>
 </ul>
 
 <h3>Frameworks, Languages & Libraries</h3>
