@@ -1,5 +1,6 @@
 FactuurApp::Application.routes.draw do
 
+  get "settings/new"
   get "invoices/new"
   get "profiles/new"
   #get "users/new"
