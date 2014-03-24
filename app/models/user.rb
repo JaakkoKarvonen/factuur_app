@@ -7,8 +7,10 @@ class User < ActiveRecord::Base
   			uniqueness: { case_sensitive: false }
   has_secure_password
   validates :password, length: { minimum: 6 }
+  #has_settings :currency, :term, :conditions, :btw
+  serialize :settings, Setting
 
-   def User.new_remember_token
+  def User.new_remember_token
     SecureRandom.urlsafe_base64
   end
 
@@ -16,6 +18,20 @@ class User < ActiveRecord::Base
     Digest::SHA1.hexdigest(token.to_s)
   end
 
+  def settings
+    if read_attribute(:settings).nil?
+      write_attribute :settings, Setting.new
+      read_attribute :settings
+    else
+      read_attribute :settings
+    end
+  end
+
+  def settings=(val)
+    write_attribute :settings, val
+  end
+
+  
   private
 
     def create_remember_token
