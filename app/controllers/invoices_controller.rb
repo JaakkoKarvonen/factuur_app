@@ -7,7 +7,7 @@ class InvoicesController < ApplicationController
 
   def show
     @invoice = Invoice.find(params[:id])
-    @invoices = Invoice.paginate(page: params[:page])
+    @product_field = ProductField.find_by_invoice_id(@invoice)
   end
 
   def new
@@ -46,6 +46,6 @@ class InvoicesController < ApplicationController
   private
 
     def invoice_params
-      params.require(:invoice).permit(:contact_id, :date, :product_id, :amount)
+      params.require(:invoice).permit(:date, :contact_id, fields_attributes: [:product, :amount])
     end
 end

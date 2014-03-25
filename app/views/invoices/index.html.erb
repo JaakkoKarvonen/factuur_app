@@ -12,8 +12,7 @@
 	 <% count = 2014001 %>
 	 <% @invoices.each do |invoice| %>
 	 	<a href="/invoices/<%= invoice.id %>" class="btn btn-primary btn-lg btn-block">
-	 		<% @contactid = invoice.contact_id %>
-	 		<%= Contact.find(@contactid).company %>
+	 		Factuur
 	 		<%= count %>
 	 	</a>
 	 <% count = count + 1 %>	

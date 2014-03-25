@@ -5,32 +5,29 @@
     <%= form_for(@invoice) do |f| %>
       <%= render 'shared/error_messages', object: f.object %>
 
-      <div class="form-group">
-        <%= f.label 'Contact' %>
-        <%= f.collection_select(:contact_id, Contact.all, :id, :name, {prompt: true}, class: "form-control") %>
-      </div>
+
+        <!-- f.label 'Contact' -->
+        
+        <!-- f.collection_select(:contact_id, Contact.all, :id, :name, {prompt: true}, class: "form-control") -->
+
 
   	  <div class="form-group">
+        <%= f.label 'Contact' %>
+        <%= f.collection_select(:contact_id, Contact.all, :id, :name, {prompt: "Selecteer contactpersoon"}, class: "form-control") %>
+      </div>
+
+      <div class="form-group">
     		<%= f.label 'Factuurdatum' %>
     		<%= f.date_field :date, class: "form-control" %>
   	  </div>
 
-  	  <table class="table">
-        <tr>
-          <td style="padding: 20px 10px 10px 0px; border:none;">
-            <div class="form-group">
-              <%= f.label 'Product' %>
-              <%= f.collection_select(:product_id, Product.all, :id, :name, {prompt: true}, class: "form-control") %>
-            </div>
-  			  </td>
-            <td style="padding: 20px 0px 10px 0px; border:none;">
-              <div class="form-group">
-                <%= f.label 'Aantal' %>
-                <%= f.text_field :amount, class: "form-control" %>
-              </div>
-            </td>
-        </tr>
-      </table>
+      <div class="form-group">
+        <%= f.fields_for :fields do |builder| %>
+          <%= render 'field_fields', f: builder %>
+        <% end %>
+      </div>
+      <%= link_to_add_fields "Voeg product toe", f, :fields %>
+
       
       <table class="table">
         <tr>

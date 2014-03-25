@@ -1,8 +1,7 @@
 <% @contactid = @invoice.contact_id %>
-<% @productid = @invoice.product_id %>
 <% @valuta = "€" %>
 <% @btw_procent = 0.21 %>
-<% provide(:title, Contact.find(@contactid).company) %>
+<% provide(:title, 'Factuur') %>
 <div class="container custom-page" style="padding-top: 30px;">
   <h1 class="visible-sm visible-md visible-lg text-center" style="color: #428bca;"><%= yield(:title) %></h1>
 
@@ -56,6 +55,27 @@
 		</div>
 	</div>
 
+
+
+	
+	<div class="row">
+		<div class="col-sm-12">
+			<span><strong>Invoice_id in invoices:</strong> <%= @invoice.id %></span>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-sm-12">
+			<span><strong>Invoice_id in product_field:</strong> <%= @product_field.invoice_id %></span>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-sm-12">
+			<span><strong>Invoice_id in product_field:</strong> <%= @product_field.amount %></span>
+		</div>
+	</div>
+
+
+
 	<div class="row" style="padding-top: 20px;">
 		<div class="table-responsive">
 		 	<table class="table">
@@ -67,11 +87,12 @@
 
 		 		
 		 			<tr>
-		 				<td><%= @invoice.amount %></td>
-		 				<td><%= Product.find(@productid).name %></td>
-		 				<td style="text-align: right;"><%= @valuta %><%= Product.find(@productid).price %></td>
+		 				<td><%= @product_field.amount %></td>
+		 				<td><%=  Product.find(@product_field.product).name %></td>
+		 				<td style="text-align: right;"><%= @valuta %> <%=  @price = Product.find(@product_field.product).price %></td>
 		 			</tr>
 		 		
+
 
 		 		<tr>
 		 			<td></td><td></td><td></td>
@@ -80,19 +101,19 @@
 		 		<tr>
 		 			<td></td>
 		 			<th style="text-align: right;">Subtotaal:</th>
-		 			<td style="text-align: right;"><%= @valuta %><%= @subtotaal = @invoice.amount * Product.find(@productid).price %></td>
+		 			<td style="text-align: right;"><%= @valuta %> <%= @subtotaal = @product_field.amount.to_f * @price.to_f %></td>
 		 		</tr>
 
 		 		<tr>
 		 			<td></td>
 		 			<th style="text-align: right;">BTW <%= @btw_procent * 100 %>%:</th>
-		 			<td style="text-align: right;"><%= @valuta %><%= @btw_totaal = @subtotaal * @btw_procent%></td>
+		 			<td style="text-align: right;"><%= @valuta %> <%= @btw_totaal = @subtotaal * @btw_procent %></td>
 		 		</tr>
 
 		 		<tr>
 		 			<td></td>
 		 			<th style="text-align: right;">Totaal:</th>
-		 			<td style="text-align: right;"><%= @valuta %><%= @totaal = @subtotaal + @btw_totaal %></td>
+		 			<td style="text-align: right;"><%= @valuta %> <%= @totaal = @subtotaal + @btw_totaal %> </td>
 		 		</tr>
 		 	</table>
 		</div>
@@ -105,7 +126,7 @@
 		<div class="col-sm-2 text-center" style="padding-top: 10px;">
 			<span>
 				<strong>IBAN:</strong><br>
-				<%= Contact.find(@contactid).account %>
+				 <%= Contact.find(@contactid).account %>
 			</span>
 		</div>
 		<div class="col-sm-2 col-sm-offset-3 text-center" style="padding-top: 10px;">
@@ -117,7 +138,7 @@
 		<div class="col-sm-2 col-sm-offset-3 text-center" style="padding-top: 10px;">
 			<span>
 				<strong>Factuurbedrag:</strong><br>
-				<%= @valuta %><%= @totaal %>
+				<%= @valuta %> @totaal 
 			</span>
 		</div>
 	</div>
