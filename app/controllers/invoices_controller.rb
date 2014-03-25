@@ -8,7 +8,7 @@ class InvoicesController < ApplicationController
   def show
     @invoice = Invoice.find(params[:id])
     @product_fields = ProductField.where(:invoice_id => @invoice.id)
-    
+    @setting = Setting.find(params[:id])
   end
 
   def new

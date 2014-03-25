@@ -1,6 +1,7 @@
 <% @contactid = @invoice.contact_id %>
-<% @valuta = "€" %>
-<% @btw_procent = 0.21 %>
+<% @valuta = @setting.currency %>
+<% @btw_procent = @setting.btw %>
+<% @termijn = @setting.term %>
 <% provide(:title, 'Factuur') %>
 <div class="container custom-page" style="padding-top: 30px;">
   <h1 class="visible-sm visible-md visible-lg text-center" style="color: #428bca;"><%= yield(:title) %></h1>
@@ -87,14 +88,14 @@
 
 		 		<tr>
 		 			<td></td>
-		 			<th style="text-align: right;">BTW <%= @btw_procent * 100 %>%:</th>
-		 			<td style="text-align: right;"><%= @valuta %>  <%= @btw_totaal = @sub * @btw_procent %></td>
+		 			<th style="text-align: right;">BTW <%= @btw_procent %>%:</th>
+		 			<td style="text-align: right;"><%= @valuta %>  <%= "x" %></td>
 		 		</tr>
 
 		 		<tr>
 		 			<td></td>
 		 			<th style="text-align: right;">Totaal:</th>
-		 			<td style="text-align: right;"><%= @valuta %> <%= @totaal = @sub + @btw_totaal %></td>
+		 			<td style="text-align: right;"><%= @valuta %> <%= "x" %></td>
 		 		</tr>
 		 	</table>
 		</div>

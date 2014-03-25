@@ -9,15 +9,10 @@
         <%= f.label 'Valuta' %>
         <%= f.select :currency, options_for_select([['€ (euro)', 0], ['$ (dollar)', 1], ['£ (pond)', 2], ['¥ (yen)', 3]]), {}, { class: 'form-control' } %>
       </div>
-      
+
       <div class="form-group">
         <%= f.label 'Betalingstermijn' %>
         <%= f.text_field :term, class: "form-control" %>
-      </div>
-
-      <div class="form-group">
-        <%= f.label 'Betalingscondities' %>
-        <%= f.text_field :conditions, class: "form-control" %>
       </div>
 
       <div class="form-group">

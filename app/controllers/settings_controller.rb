@@ -1,5 +1,5 @@
 class SettingsController < ApplicationController
-  before_action :signed_in_user, only: [:index, :new, :edit, :create]
+  before_action :signed_in_user, only: [:index, :show, :new, :create, :edit, :update, :destroy]
 
   def index
   	if @setting.nil?
@@ -29,7 +29,8 @@ class SettingsController < ApplicationController
 
   private
 
-  def setting_params
-  	params.require(:setting).permit(:currency, :term, :conditions, :btw)
-  end
+    def setting_params
+    	params.require(:setting).permit(:currency, :term, :btw)
+    end
+
 end
