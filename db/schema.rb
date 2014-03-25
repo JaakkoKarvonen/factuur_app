@@ -78,6 +78,15 @@ ActiveRecord::Schema.define(version: 20140324195549) do
 
   add_index "profiles", ["email"], name: "index_profiles_on_email", unique: true
 
+  create_table "settings", force: true do |t|
+    t.string   "currency"
+    t.string   "term"
+    t.string   "conditions"
+    t.string   "btw"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "users", force: true do |t|
     t.string   "name"
     t.string   "email"
