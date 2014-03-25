@@ -1,8 +1,12 @@
 class SettingsController < ApplicationController
-  before_action :signed_in_user, only: [:index, :show, :new, :edit, :update,]
+  before_action :signed_in_user, only: [:index, :new, :edit, :create]
 
   def index
-  	@setting = Setting.paginate(page: params[:page])
+  	if @setting.nil?
+  	  @setting = Setting.new
+  	else
+  	  @setting = Setting.paginate(page: params[:page])
+  	end
   end
 
   def new
@@ -10,5 +14,22 @@ class SettingsController < ApplicationController
   end
 
   def edit
+  end
+
+  def create
+    @setting = Setting.new(setting_params)
+    if @setting.save
+      flash[:notice] = "Instellingen opgeslagen!"
+      redirect_to "/home"
+    else
+      render 'new'
+    end
+  end
+
+
+  private
+
+  def setting_params
+  	params.require(:setting).permit(:currency, :term, :conditions, :btw)
   end
 end

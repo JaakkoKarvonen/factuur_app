@@ -36,11 +36,6 @@ ActiveRecord::Schema.define(version: 20140324195549) do
     t.datetime "updated_at"
   end
 
-  create_table "invoices_products", force: true do |t|
-    t.integer "invoice_id"
-    t.integer "product_id"
-  end
-
   create_table "product_fields", force: true do |t|
     t.string   "product"
     t.string   "amount"
