@@ -56,26 +56,6 @@
 	</div>
 
 
-
-	
-	<div class="row">
-		<div class="col-sm-12">
-			<span><strong>Invoice_id in invoices:</strong> <%= @invoice.id %></span>
-		</div>
-	</div>
-	<div class="row">
-		<div class="col-sm-12">
-			<span><strong>Invoice_id in product_field:</strong> <%= @product_field.invoice_id %></span>
-		</div>
-	</div>
-	<div class="row">
-		<div class="col-sm-12">
-			<span><strong>Invoice_id in product_field:</strong> <%= @product_field.amount %></span>
-		</div>
-	</div>
-
-
-
 	<div class="row" style="padding-top: 20px;">
 		<div class="table-responsive">
 		 	<table class="table">
@@ -84,14 +64,15 @@
 		 			<th style="width: 65%;">Product</th>
 		 			<th style="width: 20%; text-align: right;">Bedrag in [valuta]</th>
 		 		</tr>
-
-		 		
+		 		<% @sub = 0 %>
+		 		<% @product_fields.each do |product| %>
 		 			<tr>
-		 				<td><%= @product_field.amount %></td>
-		 				<td><%=  Product.find(@product_field.product).name %></td>
-		 				<td style="text-align: right;"><%= @valuta %> <%=  @price = Product.find(@product_field.product).price %></td>
+		 				<td><%= product.amount %></td>
+		 				<td><%=  Product.find(product.product).name %></td>
+		 				<td style="text-align: right;"><%= @valuta %> <%=  @price = Product.find(product.product).price %></td>
 		 			</tr>
-		 		
+		 			<% @sub += @price %>
+		 		<% end %>
 
 
 		 		<tr>
@@ -101,19 +82,19 @@
 		 		<tr>
 		 			<td></td>
 		 			<th style="text-align: right;">Subtotaal:</th>
-		 			<td style="text-align: right;"><%= @valuta %> <%= @subtotaal = @product_field.amount.to_f * @price.to_f %></td>
+		 			<td style="text-align: right;"><%= @valuta %>  <%= @sub %></td>
 		 		</tr>
 
 		 		<tr>
 		 			<td></td>
 		 			<th style="text-align: right;">BTW <%= @btw_procent * 100 %>%:</th>
-		 			<td style="text-align: right;"><%= @valuta %> <%= @btw_totaal = @subtotaal * @btw_procent %></td>
+		 			<td style="text-align: right;"><%= @valuta %>  <%= @btw_totaal = @sub * @btw_procent %></td>
 		 		</tr>
 
 		 		<tr>
 		 			<td></td>
 		 			<th style="text-align: right;">Totaal:</th>
-		 			<td style="text-align: right;"><%= @valuta %> <%= @totaal = @subtotaal + @btw_totaal %> </td>
+		 			<td style="text-align: right;"><%= @valuta %> <%= @totaal = @sub + @btw_totaal %></td>
 		 		</tr>
 		 	</table>
 		</div>
@@ -138,7 +119,7 @@
 		<div class="col-sm-2 col-sm-offset-3 text-center" style="padding-top: 10px;">
 			<span>
 				<strong>Factuurbedrag:</strong><br>
-				<%= @valuta %> @totaal 
+				<%= @valuta %> <%= @totaal %> 
 			</span>
 		</div>
 	</div>

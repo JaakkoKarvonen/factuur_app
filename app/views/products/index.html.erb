@@ -16,7 +16,10 @@
 	    <div class="panel-heading" style="background-color: #428bca; border: none; color: white;">
 	      <h4 class="panel-title">
 	        <a data-toggle="collapse" data-parent="#accordion" href="#<%= product.id %>">
-	          <span class="glyphicon glyphicon-chevron-down" style="padding-right: 10px;"></span><%= product.name %>
+	          <span class="glyphicon glyphicon-chevron-down" style="padding-right: 10px;"></span><%= product.name %> €
+
+	          
+	          <%= number_with_precision(product.price, :precision => 2) %>
 	        </a>
 	      </h4>
 	    </div>
