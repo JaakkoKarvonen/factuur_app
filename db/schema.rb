@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140324195549) do
+ActiveRecord::Schema.define(version: 20140325134714) do
 
   create_table "contacts", force: true do |t|
     t.string   "company"
@@ -50,7 +50,7 @@ ActiveRecord::Schema.define(version: 20140324195549) do
     t.string   "name"
     t.string   "description"
     t.string   "serial"
-    t.integer  "price"
+    t.decimal  "price",       precision: 8, scale: 2
     t.datetime "created_at"
     t.datetime "updated_at"
   end
