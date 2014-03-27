@@ -1,4 +1,6 @@
 class SessionsController < ApplicationController
+  before_action :signed_in_user, only: :destroy
+
   def new
   end
 

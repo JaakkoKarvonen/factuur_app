@@ -14,17 +14,25 @@
   </div>
 
   <!-- Collect the nav links, forms, and other content for toggling -->
-  <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-    <ul class="nav navbar-nav">
-      <li><a href="/invoices">Facturen</a></li>
-      <li><a href="/contacts">Contacten</a></li>
-    </ul>
+  <% if signed_in? %>
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <ul class="nav navbar-nav">
+        <li><a href="/invoices">Facturen</a></li>
+        <li><a href="/contacts">Contacten</a></li>
+      </ul>
     
+      <ul role="menu" class="nav navbar-nav navbar-right">
+        <li><a href="/products">Producten</a></li>
+        <li><a href="/profiles">Profiel</a></li>
+        <li><a href="/settings">Instellingen</a></li>
+        <li role="presentation" class="divider"></li>
+        <li style="padding-right: 30px;"><a href="/signout">Uitloggen</a></li>
+      </ul>
+    </div><!-- /.navbar-collapse -->
+  <% else %>
     <ul role="menu" class="nav navbar-nav navbar-right">
-      <li><a href="/products">Producten</a></li>
-      <li><a href="/profiles">Profiel</a></li>
       <li role="presentation" class="divider"></li>
-      <li style="padding-right: 30px;"><a href="/settings">Instellingen</a></li>
+      <li style="padding-right: 30px;"><a href="/signin">Inloggen</a></li>
     </ul>
-  </div><!-- /.navbar-collapse -->
+  <% end %>
 </nav>
