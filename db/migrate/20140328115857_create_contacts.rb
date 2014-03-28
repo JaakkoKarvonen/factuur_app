@@ -10,6 +10,7 @@ class CreateContacts < ActiveRecord::Migration
       t.string :btw
       t.string :email
       t.string :account
+      t.belongs_to :user, index: true
 
       t.timestamps
     end

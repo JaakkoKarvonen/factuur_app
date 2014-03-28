@@ -6,9 +6,6 @@
 	<div class="home-buttons" style="padding-bottom: 30px;">
     	<a href="/invoices/new" class="btn btn-primary btn-lg" style="width: 200px; border:none; text-align: left;"><span class="glyphicon glyphicon-plus" style="padding-right: 5px;"></span> Nieuwe factuur</a>
   	</div>
-
-	<%= will_paginate %>
-
 	 <% count = 2014001 %>
 	 <% @invoices.each do |invoice| %>
 	 	<a href="/invoices/<%= invoice.id %>" class="btn btn-primary btn-lg btn-block">
@@ -17,9 +14,4 @@
 	 	</a>
 	 <% count = count + 1 %>	
 	 <% end %>
-
-
-	<%= will_paginate %>
-
-
 </div>

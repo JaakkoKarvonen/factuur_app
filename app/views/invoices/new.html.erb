@@ -13,7 +13,7 @@
 
   	  <div class="form-group">
         <%= f.label 'Contact' %>
-        <%= f.collection_select(:contact_id, Contact.all, :id, :name, {prompt: "Selecteer contactpersoon"}, class: "form-control") %>
+        <%= f.collection_select(:contact_id, @contact, :id, :name, {prompt: "Selecteer contactpersoon"}, class: "form-control") %>
       </div>
 
       <div class="form-group">

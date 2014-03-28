@@ -2,11 +2,14 @@ class InvoicesController < ApplicationController
   before_action :signed_in_user, only: [:index, :show, :new, :create, :edit, :update, :destroy]
 
   def index
-    @invoices = Invoice.paginate(page: params[:page])
+    @invoices = Invoice.where(:user_id => current_user.id)
   end
 
   def show
     @invoice = Invoice.find(params[:id])
+    if @invoice.user_id != current_user.id
+      redirect_to "/invoices"
+    end
     @product_fields = ProductField.where(:invoice_id => @invoice.id)
     @setting = current_user.setting
     @profile = current_user.profile
@@ -14,9 +17,11 @@ class InvoicesController < ApplicationController
 
   def new
   	@invoice = Invoice.new
+    @contact = Contact.where(:user_id => current_user.id)
   end
 
   def create
+    params[:invoice][:user_id]=current_user.id
     @invoice = Invoice.new(invoice_params)
     if @invoice.save
       redirect_to @invoice
@@ -27,6 +32,9 @@ class InvoicesController < ApplicationController
 
   def edit
     @invoice = Invoice.find(params[:id])
+    if @invoice.user_id != current_user.id
+      redirect_to "/invoices"
+    end
   end
 
   def update
@@ -48,6 +56,6 @@ class InvoicesController < ApplicationController
   private
 
     def invoice_params
-      params.require(:invoice).permit(:date, :contact_id, fields_attributes: [:product, :amount])
+      params.require(:invoice).permit(:date, :contact_id, :user_id, fields_attributes: [:product, :amount])
     end
 end

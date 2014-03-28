@@ -1,5 +1,6 @@
 class Contact < ActiveRecord::Base
 	has_many :invoices
+	belongs_to :user
 	before_save { self.email = email.downcase }
 	validates :company, length: { maximum: 50 }
 	validates :name,  presence: true, length: { maximum: 100 }
