@@ -14,6 +14,7 @@ class ProfilesController < ApplicationController
   end
 
   def create
+    params[:profile][:user_id]=current_user.id
     @profile = Profile.new(profile_params)
     if @profile.save
       flash[:notice] = "Uw profiel is succesvol aangemaakt!"
@@ -46,6 +47,6 @@ class ProfilesController < ApplicationController
   private
 
     def profile_params
-      params.require(:profile).permit(:company, :name, :address, :postcode, :city, :kvk, :btw, :email, :account, :site, :phone)
+      params.require(:profile).permit(:company, :name, :address, :postcode, :city, :kvk, :btw, :email, :account, :site, :phone, :user_id)
     end
 end

@@ -12,8 +12,10 @@ class CreateProfiles < ActiveRecord::Migration
       t.string :account
       t.integer :phone
       t.string :site
+      t.belongs_to :user, index: true
 
       t.timestamps
+
     end
   end
 end

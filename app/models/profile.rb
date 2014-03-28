@@ -1,4 +1,5 @@
 class Profile < ActiveRecord::Base
+  	belongs_to :user
 	before_save { self.email = email.downcase }
 	validates :company, presence: true, length: { maximum: 50 }
 	validates :name, length: { maximum: 100 }

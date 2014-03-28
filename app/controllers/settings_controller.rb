@@ -18,7 +18,6 @@ class SettingsController < ApplicationController
 
   def create
     params[:setting][:user_id]=current_user.id
-    print params
     @setting = Setting.new(setting_params)
     if @setting.save
       flash[:notice] = "Instellingen opgeslagen!"

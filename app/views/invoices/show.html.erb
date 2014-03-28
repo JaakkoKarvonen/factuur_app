@@ -20,15 +20,15 @@
 
 		<div class="col-sm-4 col-sm-offset-1">
 			<small>
-				FactuurApp<br>
-				Science Park 900<br>
-				1000AA Amsterdam<br>
-				www.factuurapp.nl<br>
-				info@factuurapp.nl<br>
-				Kvk: 12345678<br>
-				BTW: 123456789B12<br>
-				IBAN: NL12ABCD1234567890<br>
-				Tel: 06-12345678
+				<%= @profile.company %><br>
+				<%= @profile.address %><br>
+				<%= @profile.postcode %> <%= @profile.city %><br>
+				<%= @profile.site %><br>
+				<%= @profile.email %><br>
+				Kvk: <%= @profile.kvk %><br>
+				BTW: <%= @profile.btw %><br>
+				IBAN: <%= @profile.account %><br>
+				Tel: <%= @profile.phone %>
 			</small>
 		</div>
 	</div>
@@ -57,12 +57,6 @@
 		</div>
 	</div>
 
-	<div class="row">
-		<div class="col-sm-12">
-			<span><strong>User_id:</strong> <%= @setting.user_id %></span>
-		</div>
-	</div>
-
 
 	<div class="row" style="padding-top: 20px;">
 		<div class="table-responsive">
@@ -77,7 +71,7 @@
 		 			<tr>
 		 				<td><%= product.amount %></td>
 		 				<td><%=  Product.find(product.product).name %></td>
-		 				<td style="text-align: right;"><%= @valuta %> <%=  @price = Product.find(product.product).price %></td>
+		 				<td style="text-align: right;"><%= @currency %> <%  @price = product.amount.to_i * Product.find(product.product).price %><%= number_with_precision(@price, :precision => 2) %></td>
 		 			</tr>
 		 			<% @sub += @price %>
 		 		<% end %>
@@ -90,19 +84,19 @@
 		 		<tr>
 		 			<td></td>
 		 			<th style="text-align: right;">Subtotaal:</th>
-		 			<td style="text-align: right;"><%= @currency %>  <%= @sub %></td>
+		 			<td style="text-align: right;"><%= @currency %>  <%= number_with_precision(@sub, :precision => 2) %></td>
 		 		</tr>
 
 		 		<tr>
 		 			<td></td>
 		 			<th style="text-align: right;">BTW <%= @btw_procent %>%:</th>
-		 			<td style="text-align: right;"><%= @currency %>  <%= "x" %></td>
+		 			<td style="text-align: right;"><%= @currency %>  <% @btw = @btw_procent * @sub / 100 %><%= number_with_precision(@btw, :precision => 2) %></td>
 		 		</tr>
 
 		 		<tr>
 		 			<td></td>
 		 			<th style="text-align: right;">Totaal:</th>
-		 			<td style="text-align: right;"><%= @currency %> <%= "x" %></td>
+		 			<td style="text-align: right;"><%= @currency %> <% @totaal = @sub + @btw %><%= number_with_precision(@totaal, :precision => 2) %></td>
 		 		</tr>
 		 	</table>
 		</div>
@@ -127,14 +121,14 @@
 		<div class="col-sm-2 col-sm-offset-3 text-center" style="padding-top: 10px;">
 			<span>
 				<strong>Factuurbedrag:</strong><br>
-				<%= @currency %> <%= @totaal %> 
+				<%= @currency %> <%= number_with_precision(@totaal, :precision => 2) %> 
 			</span>
 		</div>
 	</div>
 
 	<div class="row">
 		<div class="col-sm-12 text-center" style="padding-top: 30px;">
-			<small>Wij verzoeken u vriendelijk het verschuldigde bedrag binnen 14 dagen over te maken onder vermelding van het factuurnummer.</small>
+			<small>Wij verzoeken u vriendelijk het verschuldigde bedrag binnen <%= @term %> dagen over te maken onder vermelding van het factuurnummer.</small>
 		</div>
 	</div>
 

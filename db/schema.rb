@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140328091147) do
+ActiveRecord::Schema.define(version: 20140328101601) do
 
   create_table "contacts", force: true do |t|
     t.string   "company"
@@ -67,11 +67,12 @@ ActiveRecord::Schema.define(version: 20140328091147) do
     t.string   "account"
     t.integer  "phone"
     t.string   "site"
+    t.integer  "user_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
-  add_index "profiles", ["email"], name: "index_profiles_on_email", unique: true
+  add_index "profiles", ["user_id"], name: "index_profiles_on_user_id"
 
   create_table "settings", force: true do |t|
     t.string   "currency"
