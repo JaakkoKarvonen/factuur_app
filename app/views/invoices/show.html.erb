@@ -1,7 +1,7 @@
 <% @contactid = @invoice.contact_id %>
-<% @valuta = @setting.currency %>
+<% @currency = @setting.currency %>
 <% @btw_procent = @setting.btw %>
-<% @termijn = @setting.term %>
+<% @term = @setting.term %>
 
 <% provide(:title, 'Factuur') %>
 <div class="container custom-page" style="padding-top: 30px;">
@@ -53,7 +53,7 @@
 
 	<div class="row">
 		<div class="col-sm-12">
-			<span><strong>Vervaldatum:</strong> <%= @invoice.date + @termijn %></span>
+			<span><strong>Vervaldatum:</strong> <%= @invoice.date + @term %></span>
 		</div>
 	</div>
 
@@ -90,19 +90,19 @@
 		 		<tr>
 		 			<td></td>
 		 			<th style="text-align: right;">Subtotaal:</th>
-		 			<td style="text-align: right;"><%= @valuta %>  <%= @sub %></td>
+		 			<td style="text-align: right;"><%= @currency %>  <%= @sub %></td>
 		 		</tr>
 
 		 		<tr>
 		 			<td></td>
 		 			<th style="text-align: right;">BTW <%= @btw_procent %>%:</th>
-		 			<td style="text-align: right;"><%= @valuta %>  <%= "x" %></td>
+		 			<td style="text-align: right;"><%= @currency %>  <%= "x" %></td>
 		 		</tr>
 
 		 		<tr>
 		 			<td></td>
 		 			<th style="text-align: right;">Totaal:</th>
-		 			<td style="text-align: right;"><%= @valuta %> <%= "x" %></td>
+		 			<td style="text-align: right;"><%= @currency %> <%= "x" %></td>
 		 		</tr>
 		 	</table>
 		</div>
@@ -127,7 +127,7 @@
 		<div class="col-sm-2 col-sm-offset-3 text-center" style="padding-top: 10px;">
 			<span>
 				<strong>Factuurbedrag:</strong><br>
-				<%= @valuta %> <%= @totaal %> 
+				<%= @currency %> <%= @totaal %> 
 			</span>
 		</div>
 	</div>
