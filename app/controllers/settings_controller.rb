@@ -1,11 +1,11 @@
 class SettingsController < ApplicationController
-  before_action :signed_in_user, only: [:index, :show, :new, :create, :edit, :update, :destroy]
+  before_action :signed_in_user, only: [:index, :new, :edit, :create]
 
   def index
-  	if @setting.nil?
+  	if current_user.setting.nil?
   	  redirect_to new_setting_path
   	else
-  	  redirect_to edit_setting_path
+  	  redirect_to edit_setting_path(Setting.where(:user_id => current_user.id))
   	end
   end
 
@@ -14,11 +14,11 @@ class SettingsController < ApplicationController
   end
 
   def edit
+    @setting = Setting.where(:user_id => current_user.id).first
   end
 
   def create
     params[:setting][:user_id]=current_user.id
-    print params
     @setting = Setting.new(setting_params)
     if @setting.save
       flash[:notice] = "Instellingen opgeslagen!"

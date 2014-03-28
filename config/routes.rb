@@ -6,6 +6,7 @@ FactuurApp::Application.routes.draw do
   get "invoices/new"
   get "profiles/new"
   get "products/new"
+
   #get "users/new"
   #get "products/create"
   #get "products/show"
@@ -26,7 +27,7 @@ FactuurApp::Application.routes.draw do
 
 
   root 'static_pages#home'
-  #deze match is misschien overbodig: match 'newcontact', to: 'contacts#new',       via: 'get'
+  #voor wat mooiere URL's
   match '/home',        to: 'static_pages#home',  via: 'get'
   match '/signup',      to: 'users#new',          via: 'get'
   match '/signin',      to: 'sessions#new',       via: 'get'
