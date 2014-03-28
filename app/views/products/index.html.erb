@@ -7,8 +7,6 @@
     	<a href="/products/new" class="btn btn-primary btn-lg" style="width: 200px; border:none; text-align: left;"><span class="glyphicon glyphicon-plus" style="padding-right: 5px;"></span> Voeg product toe</a>
   	</div>
 
-	<%= will_paginate %>
-
 	<div class="panel-group" id="accordion">
 	 <% @products.each do |product| %>
 
@@ -40,8 +38,4 @@
 
 	 <% end %>
 	</div>
-
-	<%= will_paginate %>
-
-
 </div>

@@ -5,6 +5,7 @@ class CreateProducts < ActiveRecord::Migration
       	t.string :description
       	t.string :serial
       	t.decimal :price, :precision => 8, :scale => 2
+		t.belongs_to :user, index: true
 
       	t.timestamps
     end

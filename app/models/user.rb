@@ -5,6 +5,7 @@ class User < ActiveRecord::Base
   has_one :profile
   has_many :contacts
   has_many :invoices
+  has_many :products
   validates :name, presence: true, length: { maximum: 50 }
   VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
   validates :email, presence: true, format: { with: VALID_EMAIL_REGEX }, 
