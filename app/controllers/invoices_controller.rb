@@ -9,6 +9,7 @@ class InvoicesController < ApplicationController
     @invoice = Invoice.find(params[:id])
     @product_fields = ProductField.where(:invoice_id => @invoice.id)
     @setting = current_user.setting
+    @profile = current_user.profile
   end
 
   def new
