@@ -11,7 +11,7 @@ class UsersController < ApplicationController
     if @user.save
       sign_in @user
       flash[:notice] = "Welkom"
-      redirect_to "/home"
+      redirect_to "/profiles/new"
     else
       render 'new'
     end
@@ -40,10 +40,12 @@ class UsersController < ApplicationController
                                    :password_confirmation)
     end
 
+    # if user is not signed in, redirect to signin page
     def signed_in_user
       redirect_to signin_url, notice: "Log in a.u.b." unless signed_in?
     end
 
+    #allow only the right user to access personal pages
     def correct_user
       @user = User.find(params[:id])
       redirect_to(root_url) unless current_user?(@user)
