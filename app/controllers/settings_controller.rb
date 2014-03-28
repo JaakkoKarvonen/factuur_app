@@ -17,6 +17,14 @@ class SettingsController < ApplicationController
   	@setting = Setting.new
   end
 
+  def show
+    if current_user.setting.nil?
+      redirect_to new_setting_path
+    else
+      redirect_to edit_setting_path(Setting.where(:user_id => current_user.id))
+    end
+  end
+
   def edit
     if current_user.setting.nil?
       redirect_to new_setting_path

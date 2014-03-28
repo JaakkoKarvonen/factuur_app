@@ -11,7 +11,11 @@ class ProfilesController < ApplicationController
   end
 
   def show
-    @profile = Profile.find(params[:id])
+    if current_user.profile.nil?
+      redirect_to new_profile_path
+    else
+      redirect_to edit_profile_path(Profile.where(:user_id => current_user.id))
+    end
   end
 
   def new
@@ -26,7 +30,7 @@ class ProfilesController < ApplicationController
     @profile = Profile.new(profile_params)
     if @profile.save
       flash[:notice] = "Uw profiel is succesvol aangemaakt!"
-      redirect_to "/profiles"
+      redirect_to "/settings"
     else
       render 'new'
     end
@@ -40,7 +44,7 @@ class ProfilesController < ApplicationController
     @profile = Profile.find_by_id(params[:id])
     if @profile.update_attributes(profile_params)
       flash[:notice] = "Profiel gewijzigd!"
-      redirect_to "/profiles"
+      redirect_to "/home"
     else
       render 'edit'
     end
