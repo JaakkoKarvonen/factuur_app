@@ -7,6 +7,7 @@ class User < ActiveRecord::Base
   validates :email, presence: true, format: { with: VALID_EMAIL_REGEX }, 
   			uniqueness: { case_sensitive: false }
   has_secure_password
+  has_one :setting
   validates :password, length: { minimum: 6 }
   #has_settings :currency, :term, :conditions, :btw
   serialize :settings, Setting
