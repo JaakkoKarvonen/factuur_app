@@ -1,6 +1,7 @@
 class SettingsController < ApplicationController
   before_action :signed_in_user, only: [:index, :new, :edit, :create]
 
+  # if user has already set settings, redirect to edit
   def index
   	if current_user.setting.nil?
   	  redirect_to new_setting_path
