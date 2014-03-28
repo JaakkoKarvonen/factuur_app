@@ -1,27 +1,6 @@
 <% provide(:title, 'Instellingen') %>
 <div class="container custom-page" style="padding-top: 30px;">
   <h1 class="visible-sm visible-md visible-lg text-center" style="color: #428bca;"><%= yield(:title) %></h1>
-  <div>
-    <%= form_for @setting do |f| %>
-      <%= render 'shared/error_messages', object: f.object %>
-
-      <div class="form-group">
-        <%= f.label 'Valuta' %>
-        <%= f.select :currency, options_for_select([['€ (euro)', 0], ['$ (dollar)', 1], ['£ (pond)', 2], ['¥ (yen)', 3]]), {}, { class: 'form-control' } %>
-      </div>
-
-      <div class="form-group">
-        <%= f.label 'Betalingstermijn' %>
-        <%= f.text_field :term, class: "form-control" %>
-      </div>
-
-      <div class="form-group">
-        <%= f.label 'BTW-percentage' %>
-        <%= f.select :btw, options_for_select([['0%', 0], ['6%', 6], ['21%', 21]]), {}, { class: 'form-control' } %>
-      </div>
-
-      <%= f.submit "Opslaan", class: "btn btn-large btn-primary" %>
-    <% end %> 
-  </div>
+  <h1>Index pagina</h1>
 </div>
 
