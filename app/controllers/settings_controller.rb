@@ -11,10 +11,16 @@ class SettingsController < ApplicationController
   end
 
   def new
+    if !current_user.setting.nil?
+      redirect_to edit_setting_path(Setting.where(:user_id => current_user.id))
+    end
   	@setting = Setting.new
   end
 
   def edit
+    if current_user.setting.nil?
+      redirect_to new_setting_path
+    end
     @setting = Setting.where(:user_id => current_user.id).first
   end
 
@@ -26,6 +32,16 @@ class SettingsController < ApplicationController
       redirect_to "/home"
     else
       render 'new'
+    end
+  end
+
+  def update
+    @setting = Setting.find_by_id(params[:id])
+    if @setting.update_attributes(setting_params)
+      flash[:notice] = "Instellingen gewijzigd!"
+      redirect_to "/home"
+    else
+      render 'edit'
     end
   end
 

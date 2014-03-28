@@ -2,7 +2,12 @@ class ProfilesController < ApplicationController
   before_action :signed_in_user, only: [:index, :show, :new, :create, :edit, :update, :destroy]
 
   def index
-    @profiles = Profile.paginate(page: params[:page])
+    #@profiles = Profile.paginate(page: params[:page])
+    if current_user.profile.nil?
+      redirect_to new_profile_path
+    else
+      redirect_to edit_profile_path(Profile.where(:user_id => current_user.id))
+    end
   end
 
   def show
@@ -10,6 +15,9 @@ class ProfilesController < ApplicationController
   end
 
   def new
+    if !current_user.profile.nil?
+      redirect_to edit_profile_path(Profile.where(:user_id => current_user.id))
+    end
   	@profile = Profile.new
   end
 
@@ -25,7 +33,7 @@ class ProfilesController < ApplicationController
   end
 
   def edit
-    @profile = Profile.find(params[:id])
+    @profile = Profile.where(:user_id => current_user.id).first
   end
 
   def update
