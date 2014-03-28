@@ -13,6 +13,16 @@ class InvoicesController < ApplicationController
     @product_fields = ProductField.where(:invoice_id => @invoice.id)
     @setting = current_user.setting
     @profile = current_user.profile
+    @factnr = Time.now.year.to_s + @invoice.id.to_s.rjust(3, '0')
+    respond_to do |format|
+      format.html
+      format.pdf do
+        pdf = InvoicePdf.new(@invoice, @product_fields, @setting, @profile, @factnr)
+        send_data pdf.render, filename: "factuur_#{@factnr}.pdf",
+                              type: "application/pdf",
+                              disposition: "inline"
+      end
+    end
   end
 
   def new
