@@ -3,9 +3,9 @@ class SettingsController < ApplicationController
 
   def index
   	if @setting.nil?
-  	  @setting = Setting.new
+  	  redirect_to new_setting_path
   	else
-  	  @setting = Setting.paginate(page: params[:page])
+  	  redirect_to edit_setting_path
   	end
   end
 

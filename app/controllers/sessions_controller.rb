@@ -8,7 +8,7 @@ class SessionsController < ApplicationController
     user = User.find_by(email: params[:session][:email].downcase)
     if user && user.authenticate(params[:session][:password])
       sign_in user
-      render 'static_pages/home_signed_in'
+      redirect_to root_url
     else
       flash[:error] = 'Email/gebruikersnaam ongeldig'
       render 'new'
@@ -17,6 +17,7 @@ class SessionsController < ApplicationController
 
   def destroy
   	sign_out
+    flash[:notice] = "Succesvol uitgelogd"
   	redirect_to root_url
   end
 end
