@@ -16,8 +16,17 @@ class InvoicesController < ApplicationController
   end
 
   def new
-  	@invoice = Invoice.new
-    @contact = Contact.where(:user_id => current_user.id)
+    if current_user.contacts.empty?
+      redirect_to "/contacts/new"
+      flash[:error] = "U heeft nog geen contacten. Maak een contact aan."
+    elsif current_user.products.empty?
+      redirect_to "/products/new"
+      flash[:error] = "U heeft nog geen producten. Maak een product aan."
+    else
+      @invoice = Invoice.new
+      @contact = Contact.where(:user_id => current_user.id)
+      @product = Product.where(:user_id => current_user.id)
+    end
   end
 
   def create
