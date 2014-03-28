@@ -5,6 +5,7 @@ class CreateSettings < ActiveRecord::Migration
       t.string :currency
       t.integer :term
       t.integer :btw
+      t.belongs_to :user, index: true
       
       t.timestamps
     end

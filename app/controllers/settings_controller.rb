@@ -17,6 +17,8 @@ class SettingsController < ApplicationController
   end
 
   def create
+    params[:setting][:user_id]=current_user.id
+    print params
     @setting = Setting.new(setting_params)
     if @setting.save
       flash[:notice] = "Instellingen opgeslagen!"
@@ -30,7 +32,7 @@ class SettingsController < ApplicationController
   private
 
     def setting_params
-    	params.require(:setting).permit(:currency, :term, :btw)
+    	params.require(:setting).permit(:currency, :term, :btw, :user_id)
     end
 
 end
