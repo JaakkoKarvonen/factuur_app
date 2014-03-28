@@ -58,7 +58,6 @@ class InvoicesController < ApplicationController
 
   def destroy
     Invoice.find(params[:id]).destroy
-    flash[:notice] = "Factuur verwijderd."
     redirect_to invoices_url
   end
 
