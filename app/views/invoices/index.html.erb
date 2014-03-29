@@ -6,7 +6,7 @@
     	<a href="/invoices/new" class="btn btn-primary btn-lg" style="width: 200px; border:none; text-align: left;"><span class="glyphicon glyphicon-plus" style="padding-right: 5px;"></span> Nieuwe factuur</a>
   	</div>
 	 <% @invoices.each do |invoice| %>
-	 	<%= link_to "Factuur #{@factnr = Time.now.year.to_s + invoice.id.to_s.rjust(3, '0')}", invoice_path(invoice, format: "pdf"), class: "btn btn-primary btn-lg btn-block" %>
+	 	<%= link_to "Factuur #{@factnr = Time.now.year.to_s + invoice.id.to_s.rjust(3, '0')}", invoice_path(invoice, format: "pdf"), target: "_blank", class: "btn btn-primary btn-lg btn-block" %>
 	 <% end %>
 </div>
 
