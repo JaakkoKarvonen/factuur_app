@@ -18,7 +18,7 @@ class ProfilesController < ApplicationController
     @profile = Profile.new(profile_params)
     if @profile.save
       flash[:notice] = "Uw profiel is succesvol aangemaakt!"
-      redirect_to "/profiles"
+      redirect_to "/settings/new"
     else
       render 'new'
     end

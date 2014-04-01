@@ -1,8 +1,8 @@
 <% provide(:title, 'Instellingen') %>
 <div class="container custom-page" style="padding-top: 30px;">
   <h1 class="visible-sm visible-md visible-lg text-center" style="color: #428bca;"><%= yield(:title) %></h1>
+  <div class="text-center"><h4>Om deze app te kunnen gebruiken, dient u eerst de volgende instellingen aan te maken:</h4></div>
   <div>
-    Dit is new
     <%= form_for @setting do |f| %>
       <%= render 'shared/error_messages', object: f.object %>
 
