@@ -2,14 +2,26 @@ class ProfilesController < ApplicationController
   before_action :signed_in_user, only: [:index, :show, :new, :create, :edit, :update, :destroy]
 
   def index
-    @profiles = Profile.paginate(page: params[:page])
+    #@profiles = Profile.paginate(page: params[:page])
+    if current_user.profile.nil?
+      redirect_to new_profile_path
+    else
+      redirect_to edit_profile_path(Profile.where(:user_id => current_user.id))
+    end
   end
 
   def show
-    @profile = Profile.find(params[:id])
+    if current_user.profile.nil?
+      redirect_to new_profile_path
+    else
+      redirect_to edit_profile_path(Profile.where(:user_id => current_user.id))
+    end
   end
 
   def new
+    if !current_user.profile.nil?
+      redirect_to edit_profile_path(Profile.where(:user_id => current_user.id))
+    end
   	@profile = Profile.new
   end
 
@@ -18,21 +30,21 @@ class ProfilesController < ApplicationController
     @profile = Profile.new(profile_params)
     if @profile.save
       flash[:notice] = "Uw profiel is succesvol aangemaakt!"
-      redirect_to "/settings/new"
+      redirect_to "/settings"
     else
       render 'new'
     end
   end
 
   def edit
-    @profile = Profile.find(params[:id])
+    @profile = Profile.where(:user_id => current_user.id).first
   end
 
   def update
     @profile = Profile.find_by_id(params[:id])
     if @profile.update_attributes(profile_params)
       flash[:notice] = "Profiel gewijzigd!"
-      redirect_to "/profiles"
+      redirect_to "/home"
     else
       render 'edit'
     end

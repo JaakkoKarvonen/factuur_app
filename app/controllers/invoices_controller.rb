@@ -13,11 +13,30 @@ class InvoicesController < ApplicationController
     @product_fields = ProductField.where(:invoice_id => @invoice.id)
     @setting = current_user.setting
     @profile = current_user.profile
+    @factnr = Time.now.year.to_s + @invoice.id.to_s.rjust(3, '0')
+    respond_to do |format|
+      format.html
+      format.pdf do
+        pdf = InvoicePdf.new(@invoice, @product_fields, @setting, @profile, @factnr)
+        send_data pdf.render, filename: "factuur_#{@factnr}.pdf",
+                              type: "application/pdf",
+                              disposition: "inline"
+      end
+    end
   end
 
   def new
-  	@invoice = Invoice.new
-    @contact = Contact.where(:user_id => current_user.id)
+    if current_user.contacts.empty?
+      redirect_to "/contacts/new"
+      flash[:error] = "U heeft nog geen contacten. Maak een contact aan."
+    elsif current_user.products.empty?
+      redirect_to "/products/new"
+      flash[:error] = "U heeft nog geen producten. Maak een product aan."
+    else
+      @invoice = Invoice.new
+      @contact = Contact.where(:user_id => current_user.id)
+      @product = Product.where(:user_id => current_user.id)
+    end
   end
 
   def create
@@ -49,7 +68,6 @@ class InvoicesController < ApplicationController
 
   def destroy
     Invoice.find(params[:id]).destroy
-    flash[:notice] = "Factuur verwijderd."
     redirect_to invoices_url
   end
 

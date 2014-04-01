@@ -2,7 +2,7 @@ class ProductsController < ApplicationController
   before_action :signed_in_user, only: [:index, :new, :create, :show, :delete, :edit, :update]
   
   def index
-    @products = Product.paginate(page: params[:page])
+    @products = Product.where(:user_id => current_user.id)
   end
   
   def new
@@ -10,6 +10,7 @@ class ProductsController < ApplicationController
   end
 
   def create
+    params[:product][:user_id]=current_user.id
     @product = Product.new(product_params)
     if @product.save
       flash[:notice] = "Product toegevoegd"
@@ -22,6 +23,9 @@ class ProductsController < ApplicationController
 
   def show
     @product = Product.find(params[:id])
+    if @product.user_id != current_user.id
+      redirect_to "/products"
+    end
   end
 
   def delete
@@ -29,10 +33,16 @@ class ProductsController < ApplicationController
 
   def edit
     @product = Product.find(params[:id])
+    if @product.user_id != current_user.id
+      redirect_to "/products"
+    end
   end
 
   def update
     @product = Product.find_by_id(params[:id])
+    if @product.user_id != current_user.id
+      redirect_to "/products"
+    end
     if @product.update_attributes(product_params)
       flash[:notice] = "Product gewijzigd!"
       redirect_to "/products"
@@ -50,6 +60,6 @@ class ProductsController < ApplicationController
   private
 
   def product_params
-      params.require(:product).permit(:name, :description, :serial, :price)
+      params.require(:product).permit(:name, :description, :serial, :price, :user_id)
   end
 end
