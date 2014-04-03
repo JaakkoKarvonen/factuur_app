@@ -10,7 +10,7 @@ class CreateProfiles < ActiveRecord::Migration
       t.string :btw
       t.integer :kvk
       t.string :account
-      t.integer :phone
+      t.string :phone
       t.string :site
       t.belongs_to :user, index: true
 
